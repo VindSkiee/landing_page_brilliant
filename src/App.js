@@ -150,6 +150,18 @@ const App = () => {
   // Testimonial carousel state
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
+  // Typing animation state
+  const [displayedHeading, setDisplayedHeading] = useState("");
+  const [displayedSubheading, setDisplayedSubheading] = useState("");
+  const [headingComplete, setHeadingComplete] = useState(false);
+  const [subheadingComplete, setSubheadingComplete] = useState(false);
+
+  // Full text for typing animation
+  const fullHeading =
+    "Lolos Tes TKA, SNBT, SKD. Tidak Lolos? Garansi Tahun Depan";
+  const fullSubheading =
+    "Bimbingan belajar offline & online terbaik. Dibimbing langsung oleh alumni UGM, ITB, & UNDIP dengan metode praktis tanpa ribet.";
+
   // Refs
   const socialProofRef = useRef(null);
   const heroRef = useRef(null);
@@ -161,42 +173,48 @@ const App = () => {
   const programs = [
     {
       id: 1,
-      title: "Program bimbel TKA SD, SMP & SMA",
+      title: "Program bimbel TKA",
+      subtitle: "SD, SMP & SMA",
       description:
         "Berbagai macam pilihan program bimbel yang dapat dipilih sesuai kebutuhanmu",
       color: "bg-brilliant-yellow",
     },
     {
       id: 2,
-      title: "Program bimbel SNBT & UM PTN",
+      title: "Program bimbel",
+      subtitle: "SNBT & UM PTN",
       description:
         "Berbagai macam pilihan program bimbel yang dapat dipilih sesuai kebutuhanmu",
       color: "bg-brilliant-yellow",
     },
     {
       id: 3,
-      title: "Program bimbel Tes CPNS & CPPPK",
+      title: "Program bimbel",
+      subtitle: "Tes CPNS & CPPPK",
       description:
         "Berbagai macam pilihan program bimbel yang dapat dipilih sesuai kebutuhanmu",
       color: "bg-brilliant-yellow",
     },
     {
       id: 4,
-      title: "Program bimbel Tes Polisi & TNI",
+      title: "Program bimbel",
+      subtitle: "Tes Polisi & TNI",
       description:
         "Berbagai macam pilihan program bimbel yang dapat dipilih sesuai kebutuhanmu",
       color: "bg-brilliant-yellow",
     },
     {
       id: 5,
-      title: "Program bimbel Tes Kedinasan",
+      title: "Program bimbel",
+      subtitle: "Tes Kedinasan",
       description:
         "Berbagai macam pilihan program bimbel yang dapat dipilih sesuai kebutuhanmu",
       color: "bg-brilliant-yellow",
     },
     {
       id: 6,
-      title: "Program bimbel Tes BUMN & BUMS",
+      title: "Program bimbel",
+      subtitle: "Tes BUMN & BUMS",
       description:
         "Berbagai macam pilihan program bimbel yang dapat dipilih sesuai kebutuhanmu",
       color: "bg-brilliant-yellow",
@@ -267,6 +285,46 @@ const App = () => {
     }, 100);
     return () => clearTimeout(timer);
   }, []);
+
+  // Typing animation for heading
+  useEffect(() => {
+    if (!heroAnimated) return;
+
+    let currentIndex = 0;
+    const typingSpeed = 40; // milliseconds per character
+
+    const typingInterval = setInterval(() => {
+      if (currentIndex <= fullHeading.length) {
+        setDisplayedHeading(fullHeading.slice(0, currentIndex));
+        currentIndex++;
+      } else {
+        clearInterval(typingInterval);
+        setHeadingComplete(true);
+      }
+    }, typingSpeed);
+
+    return () => clearInterval(typingInterval);
+  }, [heroAnimated]);
+
+  // Typing animation for subheading (starts after heading is complete)
+  useEffect(() => {
+    if (!headingComplete) return;
+
+    let currentIndex = 0;
+    const typingSpeed = 25; // milliseconds per character
+
+    const typingInterval = setInterval(() => {
+      if (currentIndex <= fullSubheading.length) {
+        setDisplayedSubheading(fullSubheading.slice(0, currentIndex));
+        currentIndex++;
+      } else {
+        clearInterval(typingInterval);
+        setSubheadingComplete(true);
+      }
+    }, typingSpeed);
+
+    return () => clearInterval(typingInterval);
+  }, [headingComplete]);
 
   // Intersection Observer untuk counter animation
   useEffect(() => {
@@ -361,10 +419,20 @@ const App = () => {
         <div
           className={`max-w-6xl mx-auto rounded-full shadow-2xl transition-all duration-500 ${
             isScrolled
-              ? "bg-white/10 backdrop-blur-xl border border-white/20 shadow-lg"
-              : "bg-gradient-to-r from-[#FF2E2E] to-[#DF2222]"
+              ? "liquid-glass-navbar liquid-glass-effect liquid-shimmer liquid-shadow"
+              : "bg-gradient-to-r from-[#FF2E2E] to-[#DF2222] liquid-ripple"
           }`}
         >
+          {/* Floating particles for liquid glass effect */}
+          {isScrolled && (
+            <>
+              <div className="liquid-particle" style={{ width: '4px', height: '4px', top: '20%', left: '15%', animationDelay: '0s' }} />
+              <div className="liquid-particle" style={{ width: '6px', height: '6px', top: '60%', left: '80%', animationDelay: '2s' }} />
+              <div className="liquid-particle" style={{ width: '3px', height: '3px', top: '40%', left: '50%', animationDelay: '4s' }} />
+              <div className="liquid-particle" style={{ width: '5px', height: '5px', top: '70%', left: '25%', animationDelay: '6s' }} />
+              <div className="liquid-particle" style={{ width: '4px', height: '4px', top: '30%', left: '70%', animationDelay: '8s' }} />
+            </>
+          )}
           <div className="px-6 lg:px-8">
             <div className="flex items-center justify-between h-16 lg:h-[72px]">
               {/* Logo */}
@@ -377,7 +445,7 @@ const App = () => {
                 <div className="hidden sm:block">
                   <div
                     className={`font-extrabold text-sm lg:text-base leading-tight transition-colors duration-500 ${
-                      isScrolled ? "text-gray-900" : "text-brilliant-purple"
+                      isScrolled ? "text-gray-900" : "text-white"
                     }`}
                   >
                     BRILLIANT INDONESIA
@@ -429,7 +497,7 @@ const App = () => {
               {/* CTA Button */}
               <div className="flex items-center gap-4">
                 <a
-                  href="https://wa.me/6281234567890"
+                  href="https://wa.me/6281366369621"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 bg-gradient-to-r from-[#47D029] to-[#2FA91D] text-white px-5 py-2.5 lg:px-6 lg:py-3 rounded-full font-medium text-sm hover:scale-105 hover:brightness-110 transition-all duration-300 shadow-lg"
@@ -526,7 +594,7 @@ const App = () => {
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-8 items-center">
             {/* Left Content - Takes 55% on desktop */}
             <div
-              className={`lg:w-[100%] space-y-6 lg:space-y-4 transition-all duration-800 ${
+              className={`lg:w-[100%] space-y-6 lg:space-y-4 transition-all duration-800 pt-28 sm:pt-32 lg:pt-36 ${
                 heroAnimated
                   ? "opacity-100 translate-x-0"
                   : "opacity-0 -translate-x-24"
@@ -534,35 +602,93 @@ const App = () => {
             >
               {/* Main Heading */}
               <h1
-                className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold leading-tight"
+                className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold leading-tight h-[7rem] sm:h-[8rem] lg:h-[9rem] mb-2 lg:mb-4 relative"
                 style={{ transitionDelay: "0ms" }}
               >
-                Lolos Tes{" "}
-                <span className="text-brilliant-red">TKA, SNBT, SKD.</span>
-                <br />
-                Tidak Lolos? Garansi{" "}
-                <span className="text-brilliant-red">Tahun Depan</span>
+                {/* Invisible full text to establish layout */}
+                <span className="invisible" aria-hidden="true">
+                  Lolos Tes <span>TKA, SNBT, SKD.</span>
+                  <br />
+                  Tidak Lolos? Garansi <span>Tahun Depan</span>
+                </span>
+                {/* Visible typing animation overlay */}
+                <span className="absolute inset-0">
+                  {displayedHeading.split(" ").map((word, index, arr) => {
+                    const highlightWords = [
+                      "TKA,",
+                      "SNBT,",
+                      "SKD.",
+                      "Tahun",
+                      "Depan",
+                    ];
+                    const isHighlight = highlightWords.includes(word);
+                    const isLineBreak = word === "Tidak";
+                    return (
+                      <span key={index}>
+                        {isLineBreak && <br />}
+                        <span
+                          className={isHighlight ? "text-brilliant-red" : ""}
+                        >
+                          {word}
+                        </span>
+                        {index < arr.length - 1 ? " " : ""}
+                      </span>
+                    );
+                  })}
+                  <span
+                    className={`inline-block w-0.5 h-6 sm:h-8 lg:h-10 bg-brilliant-red ml-1 align-middle ${headingComplete ? "opacity-0" : "animate-pulse"}`}
+                  ></span>
+                </span>
               </h1>
 
               {/* Subheading */}
               <p
-                className="text-gray-700 text-base lg:text-1xl max-w-xl font-medium"
+                className="text-gray-700 text-base lg:text-1xl max-w-xl font-medium h-[4.5rem] lg:h-[4rem] relative"
                 style={{ transitionDelay: "200ms" }}
               >
-                Bimbingan belajar offline & online terbaik. Dibimbing langsung
-                oleh alumni UGM, ITB, & UNDIP dengan metode praktis tanpa ribet.
+                {/* Invisible full text to establish layout */}
+                <span className="invisible" aria-hidden="true">
+                  Bimbingan belajar offline & online berkualitas tinggi,
+                  dibimbing langsung oleh alumni UGM, ITB, & UNDIP. Metode
+                  belajar praktis, jelas, dan efisien untuk hasil maksimal tanpa
+                  proses yang rumit.
+                </span>
+                {/* Visible typing animation overlay */}
+                <span className="absolute inset-0">
+                  {displayedSubheading}
+                  {headingComplete && (
+                    <span
+                      className={`inline-block w-0.5 h-4 lg:h-5 bg-gray-500 ml-1 align-middle ${subheadingComplete ? "opacity-0" : "animate-pulse"}`}
+                    ></span>
+                  )}
+                </span>
               </p>
 
               {/* University Logos Placeholder */}
-              <div className="flex items-center gap-4 flex-wrap">
-                {["UGM", "ITB", "UNDIP", "UI", "UNPAD"].map((uni, idx) => (
+              <div className="flex items-center gap-12 flex-wrap">
+                {[
+                  { name: "UGM", fileName: "logo-UGM.png" },
+                  { name: "ITB", fileName: "logo-ITB.png" },
+                  { name: "UNDIP", fileName: "logo-UNDIP.png" },
+                  { name: "UI", fileName: "logo-UI.png" },
+                  { name: "UNPAD", fileName: "logo-UNPAD.png" },
+                ].map((uni, idx) => (
                   <div
-                    key={uni}
-                    className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center border border-gray-200"
+                    key={uni.name}
+                    className="w-16 h-16 flex items-center justify-center overflow-hidden"
                     style={{ transitionDelay: `${300 + idx * 50}ms` }}
                   >
-                    <span className="text-xs font-bold text-gray-500">
-                      {uni}
+                    <img
+                      src={`/photo/${uni.fileName}`}
+                      alt={`Logo ${uni.name}`}
+                      className="w-10 h-10 object-contain"
+                      onError={(e) => {
+                        e.currentTarget.style.display = "none";
+                        e.currentTarget.nextSibling.style.display = "block";
+                      }}
+                    />
+                    <span className="text-[10px] font-bold text-gray-500 hidden">
+                      {uni.name}
                     </span>
                   </div>
                 ))}
@@ -574,7 +700,7 @@ const App = () => {
                 style={{ transitionDelay: "400ms" }}
               >
                 <a
-                  href="https://wa.me/6281234567890"
+                  href="https://wa.me/6281366369621"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group flex items-center gap-2 bg-[#47D029] text-white px-6 py-3 rounded-full font-semibold hover:scale-105 hover:brightness-110 hover:shadow-lg transition-all duration-300"
@@ -602,8 +728,7 @@ const App = () => {
               style={{ transitionDelay: "200ms" }}
             >
               {/* 3 People Container */}
-<div className="relative z-10 w-full h-[36rem] lg:h-[40rem] pb-8">
-
+              <div className="relative z-10 w-full h-[36rem] lg:h-[40rem] pb-8">
                 {/* SVG Blob Background - Extends far to right edge */}
                 <div className="absolute lg:-right-36 xl:-right-48 top-[65%] -translate-y-1/2 z-0">
                   <BlobShape
@@ -616,7 +741,7 @@ const App = () => {
                 <div className="relative z-10 flex items-end justify-end pr-0 lg:-mr-10 xl:-mr-20 pb-8">
                   {/* Person 1 - Left (Siswa SMA) - Behind */}
                   <div
-  className="
+                    className="
     absolute bottom-0
     left-[8rem] lg:left-[10rem]
     w-64 h-96
@@ -624,49 +749,44 @@ const App = () => {
     lg:w-80 lg:h-[36rem]
     overflow-hidden translate-y-32 filter saturate-200
   "
->
-
-  <img
-    src="/photo/1_orang_sma.png"
-    alt="Anak SMA"
-    className="
+                  >
+                    <img
+                      src="/photo/1_orang_sma.png"
+                      alt="Anak SMA"
+                      className="
       w-full h-full
       object-cover object-top
       scale-x-[-1]
     "
-  />
-</div>
-
+                    />
+                  </div>
 
                   {/* Person 2 - Center (ASN) - Front and Largest */}
                   <div
-  className="
+                    className="
     absolute bottom-0
     left-[8rem] lg:left-[17rem]
     z-30
 
     w-56 sm:w-64 lg:w-72
-    h-[28rem] sm:h-[22rem] lg:h-[26rem]
+    h-[28rem] sm:h-[20rem] lg:h-[28rem]
 
     overflow-hidden translate-y-40 filter saturate-150
   "
->
-
-  <img
-    src="/photo/1_orang_asn.png"
-    alt="ASN"
-    className="
+                  >
+                    <img
+                      src="/photo/1_orang_asn.png"
+                      alt="ASN"
+                      className="
       w-full h-full
       object-cover object-top
     "
-  />
-</div>
-
-
+                    />
+                  </div>
 
                   {/* Person 3 - Right (Polisi) - Same size as SMA */}
-<div
-  className="
+                  <div
+                    className="
     w-64 h-96
     sm:w-72 sm:h-[28rem]
     lg:w-80 lg:h-[32rem]
@@ -674,18 +794,17 @@ const App = () => {
     flex-shrink-0
     translate-x-19 lg:translate-x-32 translate-y-40 filter saturate-150
   "
->
-  <img
-    src="/photo/1_orang_polisi.png"
-    alt="Polisi"
-    className="
+                  >
+                    <img
+                      src="/photo/1_orang_polisi.png"
+                      alt="Polisi"
+                      className="
       w-full h-full
       object-cover object-top
       scale-x-[-1]
     "
-  />
-</div>
-
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -750,8 +869,73 @@ const App = () => {
       {/* ========================================== */}
       {/* PROGRAM SHOWCASE SECTION */}
       {/* ========================================== */}
-      <section id="programs" className="py-16 lg:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="programs" className="py-16 lg:py-24 bg-white relative overflow-hidden">
+        {/* Decorative Background Vectors */}
+        <div className="absolute inset-0 pointer-events-none">
+          {/* Top Left - Terpotong */}
+          <img
+            src="/vector/vector_program.svg"
+            alt=""
+            className="absolute -top-24 -left-32 w-[275px] h-[265px] opacity-[0.08] transform rotate-12"
+          />
+          
+          {/* Top Right - Terpotong */}
+          <img
+            src="/vector/vector_program.svg"
+            alt=""
+            className="absolute -top-16 -right-40 w-[275px] h-[265px] opacity-[0.06] transform -rotate-45"
+          />
+          
+          {/* Middle Left - Terpotong */}
+          <img
+            src="/vector/vector_program.svg"
+            alt=""
+            className="absolute top-1/3 -left-28 w-[275px] h-[265px] opacity-[0.05] transform rotate-90"
+          />
+          
+          {/* Middle Right - Terpotong */}
+          <img
+            src="/vector/vector_program.svg"
+            alt=""
+            className="absolute top-1/2 -right-36 w-[275px] h-[265px] opacity-[0.07] transform -rotate-12"
+          />
+          
+          {/* Center - Full visible */}
+          <img
+            src="/vector/vector_program.svg"
+            alt=""
+            className="absolute top-1/4 left-1/4 w-[275px] h-[265px] opacity-[0.04] transform rotate-45"
+          />
+          
+          {/* Bottom Left - Terpotong */}
+          <img
+            src="/vector/vector_program.svg"
+            alt=""
+            className="absolute -bottom-20 -left-24 w-[275px] h-[265px] opacity-[0.08] transform -rotate-30"
+          />
+          
+          {/* Bottom Right - Terpotong */}
+          <img
+            src="/vector/vector_program.svg"
+            alt=""
+            className="absolute -bottom-32 -right-20 w-[275px] h-[265px] opacity-[0.07] transform rotate-60"
+          />
+          
+          {/* Additional scattered vectors */}
+          <img
+            src="/vector/vector_program.svg"
+            alt=""
+            className="absolute top-2/3 left-1/3 w-[275px] h-[265px] opacity-[0.03] transform -rotate-15"
+          />
+          
+          <img
+            src="/vector/vector_program.svg"
+            alt=""
+            className="absolute top-1/2 right-1/4 w-[275px] h-[265px] opacity-[0.05] transform rotate-75"
+          />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}
           <div className="text-center mb-12 lg:mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold mb-4">
@@ -771,38 +955,45 @@ const App = () => {
           </div>
 
           {/* Programs Grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          <div className="flex flex-wrap justify-center gap-6 lg:gap-8">
             {programs.map((program, index) => (
               <div
                 key={program.id}
-                className="group bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden cursor-pointer card-hover border-2 border-transparent hover:border-brilliant-red/30"
+                className="group bg-white shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden card-hover w-[360px] h-[453px] flex flex-col"
                 style={{
                   animationDelay: `${index * 100}ms`,
+                  borderRadius: '37px',
                 }}
               >
                 {/* Image Container */}
                 <div
-                  className={`relative ${program.color} h-48 lg:h-56 overflow-hidden`}
+                  className={`relative ${program.color} h-[240px] overflow-hidden flex-shrink-0`}
+                  style={{ borderRadius: '37px 37px 0 0' }}
                 >
                   <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-transparent to-black/10">
                     <div className="text-center">
-                      <div className="w-20 h-20 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform duration-300">
-                        <ImageIcon className="w-10 h-10 text-white/80" />
+                      <div className="w-24 h-24 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform duration-300">
+                        <ImageIcon className="w-12 h-12 text-white/80" />
                       </div>
                     </div>
                   </div>
-                  {/* Decorative corner */}
-                  <div className="absolute top-0 right-0 w-16 h-16 bg-white/20 rounded-bl-full" />
                 </div>
 
                 {/* Content */}
-                <div className="p-6">
-                  <h3 className="text-lg lg:text-xl font-bold text-gray-900 mb-2 group-hover:text-brilliant-red transition-colors text-center">
-                    {program.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm lg:text-base text-center">
-                    {program.description}
-                  </p>
+                <div className="p-6 flex-1 flex flex-col justify-between">
+                  <div>
+                    <div className="h-[4.5rem] mb-4 flex flex-col justify-center items-center">
+                      <h3 className="text-lg font-bold text-gray-900 group-hover:text-brilliant-red transition-colors text-center leading-tight">
+                        {program.title}
+                      </h3>
+                      <h4 className="text-lg font-bold text-gray-900 group-hover:text-brilliant-red transition-colors text-center leading-tight">
+                        {program.subtitle}
+                      </h4>
+                    </div>
+                    <p className="text-gray-600 text-sm text-center leading-relaxed">
+                      {program.description}
+                    </p>
+                  </div>
                 </div>
               </div>
             ))}
@@ -1049,7 +1240,7 @@ const App = () => {
                   <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-brilliant-yellow group-hover:text-brilliant-purple transition-all">
                     <Phone className="w-5 h-5" />
                   </div>
-                  <span>+62 812-3456-7890</span>
+                  <span>+62 812-7429-2390</span>
                 </a>
                 <a
                   href="mailto:info@brilliantindonesia.com"
@@ -1073,8 +1264,8 @@ const App = () => {
                   <MapPin className="w-5 h-5" />
                 </div>
                 <p className="leading-relaxed">
-                  Jl. Pendidikan No. 123, Kelurahan Sukses, Kecamatan Maju, Kota
-                  Metropolitan, Indonesia 12345
+                  Jl. Eka Jaya RT 20, Kel. Talang Bakung Kec.Paal Merah, Kota
+                  Jambi
                 </p>
               </div>
             </div>
