@@ -8,7 +8,6 @@ import {
   MapPin,
   Youtube,
   Image as ImageIcon,
-  Star,
 } from "lucide-react";
 import { ReactComponent as BlobShape } from "./blob-shape.svg";
 
@@ -149,6 +148,7 @@ const App = () => {
 
   // Testimonial carousel state
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [expandedTestimonials, setExpandedTestimonials] = useState({});
 
   // Typing animation state
   const [displayedHeading, setDisplayedHeading] = useState("");
@@ -177,7 +177,7 @@ const App = () => {
       subtitle: "SD, SMP & SMA",
       description:
         "Berbagai macam pilihan program bimbel yang dapat dipilih sesuai kebutuhanmu",
-      color: "bg-brilliant-yellow",
+      image: "tka.webp",
     },
     {
       id: 2,
@@ -185,7 +185,7 @@ const App = () => {
       subtitle: "SNBT & UM PTN",
       description:
         "Berbagai macam pilihan program bimbel yang dapat dipilih sesuai kebutuhanmu",
-      color: "bg-brilliant-yellow",
+      image: "snbt.webp",
     },
     {
       id: 3,
@@ -193,7 +193,7 @@ const App = () => {
       subtitle: "Tes CPNS & CPPPK",
       description:
         "Berbagai macam pilihan program bimbel yang dapat dipilih sesuai kebutuhanmu",
-      color: "bg-brilliant-yellow",
+      image: "cpns.webp",
     },
     {
       id: 4,
@@ -201,7 +201,7 @@ const App = () => {
       subtitle: "Tes Polisi & TNI",
       description:
         "Berbagai macam pilihan program bimbel yang dapat dipilih sesuai kebutuhanmu",
-      color: "bg-brilliant-yellow",
+      image: "polisi_tni.webp",
     },
     {
       id: 5,
@@ -209,7 +209,7 @@ const App = () => {
       subtitle: "Tes Kedinasan",
       description:
         "Berbagai macam pilihan program bimbel yang dapat dipilih sesuai kebutuhanmu",
-      color: "bg-brilliant-yellow",
+      image: "kedinasan.webp",
     },
     {
       id: 6,
@@ -217,7 +217,7 @@ const App = () => {
       subtitle: "Tes BUMN & BUMS",
       description:
         "Berbagai macam pilihan program bimbel yang dapat dipilih sesuai kebutuhanmu",
-      color: "bg-brilliant-yellow",
+      image: "bumn.webp",
     },
   ];
 
@@ -225,36 +225,42 @@ const App = () => {
     {
       id: 1,
       name: "Kiagus Muhammad Zaky",
+      university: "Universitas Gadjah Mada",
       quote:
         "Berkat Brilliant Indonesia, saya berhasil lolos SNBT dan diterima di PTN impian. Metode belajarnya sangat efektif dan mudah dipahami!",
     },
     {
       id: 2,
       name: "Rafit Zufar",
+      university: "Institut Teknologi Bandung",
       quote:
         "Mentor-mentornya sangat berpengalaman dan sabar dalam mengajar. Materi yang diberikan lengkap dan up-to-date sesuai kurikulum terbaru.",
     },
     {
       id: 3,
       name: "Kenzie Muhammad Rizieq",
+      university: "Universitas Diponegoro",
       quote:
         "Program garansi tahun depan membuat saya lebih tenang dalam belajar. Alhamdulillah lolos di percobaan pertama!",
     },
     {
       id: 4,
       name: "Anisa Putri Ramadhani",
+      university: "Universitas Indonesia",
       quote:
         "Bimbel terbaik yang pernah saya ikuti! Sistem belajarnya fleksibel, bisa online maupun offline sesuai kebutuhan.",
     },
     {
       id: 5,
       name: "Muhammad Faisal Akbar",
+      university: "Universitas Padjadjaran",
       quote:
         "Lolos CPNS berkat bimbingan dari Brilliant Indonesia. Tryout-nya sangat membantu untuk persiapan ujian sesungguhnya.",
     },
     {
       id: 6,
       name: "Siti Nurhaliza",
+      university: "Politeknik Negeri Jakarta",
       quote:
         "Dari awal tidak percaya diri, sekarang sudah diterima di Kedinasan. Terima kasih Brilliant Indonesia!",
     },
@@ -358,16 +364,26 @@ const App = () => {
     return 3;
   }, []);
 
-  // Testimonial carousel auto-play
+  // Testimonial carousel auto-play - pauses when any card is expanded
   useEffect(() => {
+    // Check if any testimonial is expanded
+    const hasExpandedCards = Object.values(expandedTestimonials).some(
+      (val) => val === true,
+    );
+
+    // Don't start interval if any card is expanded
+    if (hasExpandedCards) {
+      return;
+    }
+
     const interval = setInterval(() => {
       setCurrentTestimonial(
         (prev) =>
           (prev + 1) % Math.ceil(testimonials.length / getVisibleCards()),
       );
-    }, 5000);
+    }, 15000);
     return () => clearInterval(interval);
-  }, [testimonials.length, getVisibleCards]);
+  }, [testimonials.length, getVisibleCards, expandedTestimonials]);
 
   // Counter animation function
   const animateCounter = (start, end, duration, setter) => {
@@ -406,6 +422,14 @@ const App = () => {
     );
   };
 
+  // Toggle testimonial expansion
+  const toggleTestimonial = (id) => {
+    setExpandedTestimonials((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
+
   // ==========================================
   // RENDER
   // ==========================================
@@ -415,7 +439,7 @@ const App = () => {
       {/* ========================================== */}
       {/* NAVBAR */}
       {/* ========================================== */}
-      <nav className="fixed top-0 left-0 right-0 z-50 pt-4 px-4">
+      <nav className="fixed top-0 left-0 right-0 z-[9999] pt-4 px-4">
         <div
           className={`max-w-6xl mx-auto rounded-full shadow-2xl transition-all duration-500 ${
             isScrolled
@@ -426,19 +450,64 @@ const App = () => {
           {/* Floating particles for liquid glass effect */}
           {isScrolled && (
             <>
-              <div className="liquid-particle" style={{ width: '4px', height: '4px', top: '20%', left: '15%', animationDelay: '0s' }} />
-              <div className="liquid-particle" style={{ width: '6px', height: '6px', top: '60%', left: '80%', animationDelay: '2s' }} />
-              <div className="liquid-particle" style={{ width: '3px', height: '3px', top: '40%', left: '50%', animationDelay: '4s' }} />
-              <div className="liquid-particle" style={{ width: '5px', height: '5px', top: '70%', left: '25%', animationDelay: '6s' }} />
-              <div className="liquid-particle" style={{ width: '4px', height: '4px', top: '30%', left: '70%', animationDelay: '8s' }} />
+              <div
+                className="liquid-particle"
+                style={{
+                  width: "4px",
+                  height: "4px",
+                  top: "20%",
+                  left: "15%",
+                  animationDelay: "0s",
+                }}
+              />
+              <div
+                className="liquid-particle"
+                style={{
+                  width: "6px",
+                  height: "6px",
+                  top: "60%",
+                  left: "80%",
+                  animationDelay: "2s",
+                }}
+              />
+              <div
+                className="liquid-particle"
+                style={{
+                  width: "3px",
+                  height: "3px",
+                  top: "40%",
+                  left: "50%",
+                  animationDelay: "4s",
+                }}
+              />
+              <div
+                className="liquid-particle"
+                style={{
+                  width: "5px",
+                  height: "5px",
+                  top: "70%",
+                  left: "25%",
+                  animationDelay: "6s",
+                }}
+              />
+              <div
+                className="liquid-particle"
+                style={{
+                  width: "4px",
+                  height: "4px",
+                  top: "30%",
+                  left: "70%",
+                  animationDelay: "8s",
+                }}
+              />
             </>
           )}
-          <div className="px-6 lg:px-8">
+          <div className="px-6 lg:px-8 relative z-10">
             <div className="flex items-center justify-between h-16 lg:h-[72px]">
               {/* Logo */}
               <div className="flex items-center gap-3">
                 <img
-                  src="/photo/logo.png"
+                  src="/photo/logo.webp"
                   alt="Brilliant Indonesia Logo"
                   className="w-10 h-10 lg:w-12 lg:h-12 object-contain"
                 />
@@ -483,7 +552,7 @@ const App = () => {
                   Testimoni
                 </button>
                 <button
-                  onClick={() => scrollToSection("footer")}
+                  onClick={() => scrollToSection("aboutus")}
                   className={`font-bold text-sm transition-colors duration-500 ${
                     isScrolled
                       ? "text-gray-900 hover:text-brilliant-red"
@@ -667,11 +736,11 @@ const App = () => {
               {/* University Logos Placeholder */}
               <div className="flex items-center gap-12 flex-wrap">
                 {[
-                  { name: "UGM", fileName: "logo-UGM.png" },
-                  { name: "ITB", fileName: "logo-ITB.png" },
-                  { name: "UNDIP", fileName: "logo-UNDIP.png" },
-                  { name: "UI", fileName: "logo-UI.png" },
-                  { name: "UNPAD", fileName: "logo-UNPAD.png" },
+                  { name: "UGM", fileName: "logo-UGM.webp" },
+                  { name: "ITB", fileName: "logo-ITB.webp" },
+                  { name: "UNDIP", fileName: "logo-UNDIP.webp" },
+                  { name: "UI", fileName: "logo-UI.webp" },
+                  { name: "UNPAD", fileName: "logo-UNPAD.webp" },
                 ].map((uni, idx) => (
                   <div
                     key={uni.name}
@@ -710,7 +779,7 @@ const App = () => {
                 </a>
                 <button
                   onClick={() => scrollToSection("programs")}
-                  className="group flex items-center gap-4 border-4 border-brilliant-red text-brilliant-red px-6 py-3 rounded-full font-bold hover:bg-brilliant-red hover:text-white transition-all duration-300"
+                  className="group flex items-center gap-4 border-4 border-brilliant-red text-brilliant-red px-6 py-3 rounded-full font-bold hover:bg-brilliant-red hover:text-white transition-all duration-300 liquid-ripple"
                 >
                   <span>Lihat Program</span>
                   <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
@@ -751,7 +820,7 @@ const App = () => {
   "
                   >
                     <img
-                      src="/photo/1_orang_sma.png"
+                      src="/photo/1_orang_sma.webp"
                       alt="Anak SMA"
                       className="
       w-full h-full
@@ -775,7 +844,7 @@ const App = () => {
   "
                   >
                     <img
-                      src="/photo/1_orang_asn.png"
+                      src="/photo/1_orang_asn.webp"
                       alt="ASN"
                       className="
       w-full h-full
@@ -796,7 +865,7 @@ const App = () => {
   "
                   >
                     <img
-                      src="/photo/1_orang_polisi.png"
+                      src="/photo/1_orang_polisi.webp"
                       alt="Polisi"
                       className="
       w-full h-full
@@ -869,76 +938,82 @@ const App = () => {
       {/* ========================================== */}
       {/* PROGRAM SHOWCASE SECTION */}
       {/* ========================================== */}
-      <section id="programs" className="py-16 lg:py-24 bg-white relative overflow-hidden">
+      <section
+        id="programs"
+        className="py-16 lg:py-56 bg-white relative overflow-hidden"
+      >
         {/* Decorative Background Vectors */}
         <div className="absolute inset-0 pointer-events-none">
-          {/* Top Left - Terpotong */}
+          {/* Top Left - Terpotong (menyentuh atas & kiri) */}
           <img
             src="/vector/vector_program.svg"
             alt=""
-            className="absolute -top-24 -left-32 w-[275px] h-[265px] opacity-[0.08] transform rotate-12"
+            className="absolute -top-24 -left-32 w-[275px] h-[265px] opacity-[0.9] transform rotate-200"
           />
-          
-          {/* Top Right - Terpotong */}
+
+          {/* Top Right - Terpotong (menyentuh atas & kanan) */}
           <img
             src="/vector/vector_program.svg"
             alt=""
-            className="absolute -top-16 -right-40 w-[275px] h-[265px] opacity-[0.06] transform -rotate-45"
+            className="absolute -top-40 -right-10 w-[275px] h-[265px] opacity-[0.9] transform -rotate-45"
           />
-          
-          {/* Middle Left - Terpotong */}
+
+          {/* Middle Left - Terpotong (menyentuh kiri) */}
           <img
             src="/vector/vector_program.svg"
             alt=""
-            className="absolute top-1/3 -left-28 w-[275px] h-[265px] opacity-[0.05] transform rotate-90"
+            className="absolute top-1/3 -left-52 w-[275px] h-[265px] opacity-[0.7] transform rotate-90"
           />
-          
-          {/* Middle Right - Terpotong */}
+
+          {/* Middle Right - Terpotong (menyentuh kanan) */}
           <img
             src="/vector/vector_program.svg"
             alt=""
-            className="absolute top-1/2 -right-36 w-[275px] h-[265px] opacity-[0.07] transform -rotate-12"
+            className="absolute top-1/2 -right-32 w-[275px] h-[265px] opacity-[0.7] transform -rotate-25"
           />
-          
-          {/* Center - Full visible */}
+
+          {/* Center Top - Full visible (tidak menyentuh sisi) */}
           <img
             src="/vector/vector_program.svg"
             alt=""
-            className="absolute top-1/4 left-1/4 w-[275px] h-[265px] opacity-[0.04] transform rotate-45"
+            className="absolute top-16 left-1/2 -translate-x-1/2 w-[275px] h-[265px] opacity-[0.07] transform rotate-30"
           />
-          
-          {/* Bottom Left - Terpotong */}
+
+          {/* Center - Full visible (tidak menyentuh sisi)
           <img
             src="/vector/vector_program.svg"
             alt=""
-            className="absolute -bottom-20 -left-24 w-[275px] h-[265px] opacity-[0.08] transform -rotate-30"
+            className="absolute top-1/2 left-1/3 -translate-y-1/2 w-[275px] h-[265px] opacity-[0.07] transform rotate-45"
+          /> */}
+
+          {/* Center Right Inner - Full visible (tidak menyentuh sisi) */}
+          <img
+            src="/vector/vector_program.svg"
+            alt=""
+            className="absolute top-2/3 right-1/3 w-[275px] h-[265px] opacity-[0.07] transform -rotate-15"
           />
-          
-          {/* Bottom Right - Terpotong */}
+
+          {/* Custom Vector 1 - vector_program.svg */}
           <img
-            src="/vector/vector_program.svg"
+            src="/vector/vector_circle.svg"
             alt=""
-            className="absolute -bottom-32 -right-20 w-[275px] h-[265px] opacity-[0.07] transform rotate-60"
+            className="absolute w-[245px] h-[265px] opacity-[0.9]"
+            style={{ right: "450px", top: "200px" }}
           />
-          
-          {/* Additional scattered vectors */}
+
+          {/* Custom Vector 1 - vector_program.svg */}
           <img
-            src="/vector/vector_program.svg"
+            src="/vector/vector_circle.svg"
             alt=""
-            className="absolute top-2/3 left-1/3 w-[275px] h-[265px] opacity-[0.03] transform -rotate-15"
-          />
-          
-          <img
-            src="/vector/vector_program.svg"
-            alt=""
-            className="absolute top-1/2 right-1/4 w-[275px] h-[265px] opacity-[0.05] transform rotate-75"
+            className="absolute w-[245px] h-[265px] opacity-[0.9]"
+            style={{ left: "457px", top: "650px" }}
           />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}
           <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+            <h2 className="text-3xl lg:text-5xl font-extrabold leading-[1.15] mb-4">
               <span className="bg-gradient-to-r from-[#FF0000] to-[#FF7400] bg-clip-text text-transparent">
                 Program Bimbel{" "}
               </span>
@@ -955,24 +1030,65 @@ const App = () => {
           </div>
 
           {/* Programs Grid */}
-          <div className="flex flex-wrap justify-center gap-6 lg:gap-8">
+          <div className="flex flex-wrap justify-center gap-6 lg:gap-12 py-20">
             {programs.map((program, index) => (
               <div
                 key={program.id}
-                className="group bg-white shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden card-hover w-[360px] h-[453px] flex flex-col"
+                className="
+                  group
+                  bg-white
+                  shadow-lg hover:shadow-2xl
+                  transition-all duration-500
+                  overflow-visible
+                  card-hover
+                  w-[330px]
+                  min-h-[400px]   /* ⬅️ PENTING */
+                  flex flex-col
+                  relative
+                  hover:z-10
+                "
                 style={{
                   animationDelay: `${index * 100}ms`,
-                  borderRadius: '37px',
+                  borderRadius: "37px",
                 }}
               >
                 {/* Image Container */}
                 <div
-                  className={`relative ${program.color} h-[240px] overflow-hidden flex-shrink-0`}
-                  style={{ borderRadius: '37px 37px 0 0' }}
+                  className="
+    relative 
+    min-h-[180px]
+    group-hover:min-h-[198px]
+    overflow-visible
+    flex-shrink-0
+    transition-[min-height]
+    duration-500
+    ease-[cubic-bezier(0.34,1.56,0.64,1)]
+  "
+                  style={{
+                    borderRadius: "37px 37px 0 0",
+                    backgroundImage: "url('/vector/program_bg.svg')",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
                 >
-                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-transparent to-black/10">
+                  <img
+                    src={`/photo/${program.image}`}
+                    alt={program.title}
+                    className="
+    w-full
+    h-[180px]
+    object-cover translate-x-[-4px]
+    transition-transform
+    duration-300
+    ease-out
+    group-hover:scale-[1.2]
+    
+  "
+                  />
+
+                  <div className="hidden absolute inset-0 items-center justify-center bg-gradient-to-b from-transparent to-black/10">
                     <div className="text-center">
-                      <div className="w-24 h-24 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform duration-300">
+                      <div className="w-24 h-24 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-2">
                         <ImageIcon className="w-12 h-12 text-white/80" />
                       </div>
                     </div>
@@ -983,10 +1099,10 @@ const App = () => {
                 <div className="p-6 flex-1 flex flex-col justify-between">
                   <div>
                     <div className="h-[4.5rem] mb-4 flex flex-col justify-center items-center">
-                      <h3 className="text-lg font-bold text-gray-900 group-hover:text-brilliant-red transition-colors text-center leading-tight">
+                      <h3 className="text-lg font-bold text-gray-900 group-hover:font-black group-hover:text-brilliant-purple leading-[1.15] transition-colors text-center">
                         {program.title}
                       </h3>
-                      <h4 className="text-lg font-bold text-gray-900 group-hover:text-brilliant-red transition-colors text-center leading-tight">
+                      <h4 className="text-lg font-bold text-gray-900 group-hover:font-black group-hover:text-brilliant-red leading-[1.15] transition-colors text-center">
                         {program.subtitle}
                       </h4>
                     </div>
@@ -1006,16 +1122,47 @@ const App = () => {
       {/* ========================================== */}
       <section
         id="testimonials"
-        className="py-16 lg:py-24 bg-gradient-to-b from-[#FFFFFF] to-[#DCDCDC] relative overflow-hidden"
+        className="py-16 lg:py-24 bg-gradient-to-b from-[#FFFFFF] to-[#F5F5F5] relative overflow-hidden"
       >
-        {/* Decorative Blobs
-        <div className="absolute top-0 left-0 w-72 h-72 bg-brilliant-orange/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-brilliant-red/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3" /> */}
+        {/* Decorative Circle SVGs */}
+        <div className="relative inset-0 pointer-events-none">
+          {/* Orange Circle - Left */}
+          <img
+            src="/vector/orange_circle.svg"
+            alt=""
+            className="absolute w-[275px] h-[262px] opacity-100"
+            style={{ left: "41px", top: "90px", transform: "translateY(-50%)" }}
+          />
+
+          {/* Yellow Circle - Right */}
+          <img
+            src="/vector/orange_circle.svg"
+            alt=""
+            className="absolute w-[275px] h-[262px] opacity-100"
+            style={{
+              left: "740px",
+              top: "35px",
+              transform: "translateY(-50%)",
+            }}
+          />
+
+          {/* Red Circle - Far Right */}
+          <img
+            src="/vector/orange_circle.svg"
+            alt=""
+            className="absolute w-[275px] h-[262px] opacity-100"
+            style={{
+              left: "1200px",
+              top: "280px",
+              transform: "translateY(-50%)",
+            }}
+          />
+        </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}
           <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl lg:text-5xl font-extrabold leading-[1.15] mb-4">
               Mari Dengarkan Mereka yang Sudah Lulus
             </h2>
             <p className="text-gray-600 text-lg">
@@ -1025,27 +1172,37 @@ const App = () => {
 
           {/* Carousel Container */}
           <div className="relative">
-            {/* Navigation Arrows */}
+            {/* Navigation Arrows - Fixed Position, No Background */}
             <button
               onClick={prevTestimonial}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-12 z-20 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:scale-110 hover:shadow-xl transition-all duration-300 text-gray-700 hover:text-brilliant-red"
+              className="absolute left-4 lg:left-0 z-20 text-gray-700 hover:text-black hover:scale-125 transition-all duration-1000"
+              style={{ top: "280px" }}
               aria-label="Previous testimonial"
             >
-              <ChevronLeftIcon className="w-6 h-6" />
+              <ChevronLeftIcon className="w-10 h-10 lg:w-12 lg:h-12 drop-shadow-lg" />
             </button>
 
             <button
               onClick={nextTestimonial}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-12 z-20 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:scale-110 hover:shadow-xl transition-all duration-300 text-gray-700 hover:text-brilliant-red"
+              className="absolute right-4 lg:right-0 z-20 text-gray-700 hover:text-black hover:scale-125 transition-all duration-1000"
+              style={{ top: "280px" }}
               aria-label="Next testimonial"
             >
-              <ChevronRightIcon className="w-6 h-6" />
+              <ChevronRightIcon className="w-10 h-10 lg:w-12 lg:h-12 drop-shadow-lg" />
             </button>
 
             {/* Cards Container */}
-            <div className="overflow-hidden mx-8 lg:mx-16">
+            <div
+              className="relative overflow-hidden mx-8 lg:mx-16"
+              style={{
+                maskImage:
+                  "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+                WebkitMaskImage:
+                  "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+              }}
+            >
               <div
-                className="flex transition-transform duration-500 ease-in-out"
+                className="flex transition-transform duration-700 ease-out"
                 style={{
                   transform: `translateX(-${currentTestimonial * 100}%)`,
                 }}
@@ -1055,43 +1212,104 @@ const App = () => {
                   (_, groupIndex) => (
                     <div
                       key={groupIndex}
-                      className="w-full flex-shrink-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+                      className="w-full flex-shrink-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center"
                     >
                       {testimonials
                         .slice(groupIndex * 3, groupIndex * 3 + 3)
                         .map((testimonial) => (
                           <div
                             key={testimonial.id}
-                            className="bg-white rounded-2xl shadow-lg p-6 lg:p-8 hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
+                            className="flex flex-col items-center pt-8"
                           >
-                            {/* Avatar */}
-                            <div className="flex justify-center mb-6">
-                              <div className="w-20 h-20 lg:w-24 lg:h-24 bg-gradient-to-br from-gray-200 to-gray-300 rounded-full border-4 border-white shadow-lg flex items-center justify-center">
-                                <ImageIcon className="w-8 h-8 text-gray-400" />
-                              </div>
-                            </div>
-
-                            {/* Name */}
-                            <h3 className="text-lg font-semibold text-center text-gray-900 mb-4">
-                              {testimonial.name}
-                            </h3>
-
-                            {/* Quote */}
+                            {/* Card Container with overflow visible for badge */}
                             <div className="relative">
-                              <Star className="w-5 h-5 text-brilliant-yellow absolute -top-2 -left-2" />
-                              <p className="text-gray-600 text-sm lg:text-base text-center italic leading-relaxed">
-                                "{testimonial.quote}"
-                              </p>
-                            </div>
+                              {/* University Badge - Positioned outside card */}
+                              <div
+                                className="absolute left-1/2 -translate-x-1/2 bg-white text-white flex items-center justify-center z-10 shadow-lg"
+                                style={{
+                                  width: "275px",
+                                  height: "67px",
+                                  borderRadius: "14px",
+                                  top: "-33px",
+                                }}
+                              >
+                                <p className="font-bold text-sm px-4 text-center truncate">
+                                  {testimonial.university}
+                                </p>
+                              </div>
 
-                            {/* Rating Stars */}
-                            <div className="flex justify-center mt-4 gap-1">
-                              {[...Array(5)].map((_, i) => (
-                                <Star
-                                  key={i}
-                                  className="w-4 h-4 text-brilliant-yellow fill-brilliant-yellow"
-                                />
-                              ))}
+                              {/* Main Card */}
+                              <div
+                                className="bg-white transition-all duration-500 ease-in-out w-[300px] flex flex-col overflow-visible"
+                                style={{
+                                  borderRadius: "59px",
+                                  minHeight: expandedTestimonials[
+                                    testimonial.id
+                                  ]
+                                    ? "auto"
+                                    : "447px",
+                                }}
+                              >
+                                {/* Image Container */}
+                                <div
+                                  className="bg-gradient-to-br from-gray-200 to-gray-300 flex items-center shadow-lg justify-center overflow-hidden flex-shrink-0"
+                                  style={{
+                                    width: "300px",
+                                    height: "371px",
+                                    borderRadius: "59px 59px 40px 40px",
+                                  }}
+                                >
+                                  <img
+                                    src="/photo/default-avatar.jpg"
+                                    alt={testimonial.name}
+                                    className="w-full h-full object-cover"
+                                    onError={(e) => {
+                                      e.currentTarget.style.display = "none";
+                                      e.currentTarget.nextSibling.style.display =
+                                        "flex";
+                                    }}
+                                  />
+                                  <div className="hidden w-full h-full items-center justify-center">
+                                    <ImageIcon className="w-16 h-16 text-gray-400" />
+                                  </div>
+                                </div>
+
+                                {/* Name Section - Inside Card */}
+                                <div className="px-6 pt-5 pb-3 text-center">
+                                  <h3 className="text-lg font-bold text-gray-900">
+                                    {testimonial.name}
+                                  </h3>
+                                </div>
+
+                                {/* Quote Section - Collapsible */}
+                                <div
+                                  className="overflow-hidden transition-all duration-500 ease-in-out"
+                                  style={{
+                                    maxHeight: expandedTestimonials[testimonial.id] ? "500px" : "0px",
+                                    opacity: expandedTestimonials[testimonial.id] ? 1 : 0,
+                                  }}
+                                >
+                                  <div className="px-6 pb-5 pt-2">
+                                    <p className="text-gray-600 text-sm text-center italic leading-relaxed">
+                                      "{testimonial.quote}"
+                                    </p>
+                                  </div>
+                                </div>
+
+                                {/* Toggle Button */}
+                                <div className="px-6 pb-5">
+                                  <button
+                                    onClick={() =>
+                                      toggleTestimonial(testimonial.id)
+                                    }
+                                    className="w-full text-orange-500 text-sm font-semibold hover:underline"
+                                  >
+                                    {expandedTestimonials[testimonial.id]
+                                      ? "Sembunyikan"
+                                      : "Baca Selengkapnya"}
+                                  </button>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         ))}
@@ -1100,67 +1318,210 @@ const App = () => {
                 )}
               </div>
             </div>
+          </div>
+        </div>
+      </section>
 
-            {/* Dots Indicator */}
-            <div className="flex justify-center mt-8 gap-2">
-              {Array.from({ length: Math.ceil(testimonials.length / 3) }).map(
-                (_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentTestimonial(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      index === currentTestimonial
-                        ? "bg-brilliant-red scale-125"
-                        : "bg-gray-300 hover:bg-gray-400"
-                    }`}
-                    aria-label={`Go to testimonial group ${index + 1}`}
-                  />
-                ),
-              )}
+      {/* ========================================== */}
+      {/* CTA BANNER SECTION */}
+      {/* ========================================== */}
+      <section className="py-16 lg:py-40 bg-gradient-to-b from-[#F5F5F5] to-[#ffc08c]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-48">
+          <div
+            className="relative bg-gradient-to-r from-[#FF7400] to-[#FFC100] rounded-[29px] overflow-visible shadow-2xl py-8"
+            style={{ minHeight: "221px" }}
+          >
+            <div className="grid lg:grid-cols-2 gap-8 items-center">
+              {/* Left Content */}
+              <div className="p-8 lg:p-8 space-y-6">
+                <h2 className="text-3xl lg:text-2xl font-bold font-poppins text-white leading-tight">
+                  Sudah siap untuk{" "}
+                  <span className="text-brilliant-purple font-extrabold font-poppins">Mendaftar?</span>
+                </h2>
+                <p className="text-white lg:text-1xl font-medium leading-relaxed">
+                  Mari bergabung bersama Brilliant Indonesia untuk meraih
+                  sekolah/perguruan tinggi Impianmu!
+                </p>
+                <div className="flex flex-wrap gap-3 pt-2 py-4">
+                  <a
+                    href="https://wa.me/6281366369621"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white text-brilliant-orange px-4 py-3 rounded-[10px] font-bold hover:scale-105 hover:shadow-lg transition-all duration-300"
+                  >
+                    Hubungi Kami
+                  </a>
+                  <a
+                    href="https://wa.me/6281366369621"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center gap-2 bg-brilliant-purple text-white px-4 py-3 rounded-[10px] font-bold hover:scale-105 hover:shadow-lg transition-all duration-300"
+                  >
+                    <span>Daftar Sekarang</span>
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </a>
+                </div>
+              </div>
+
+              {/* Right Image */}
+              <div className="relative h-[221px] hidden lg:block">
+                <img
+                  src="/photo/sma_cta_section.webp"
+                  alt="Daftar Sekarang"
+                  className="
+        absolute 
+        bottom-6 
+        right-28 
+        h-[400px]
+        w-auto
+        object-contain
+        translate-y-20 -scale-x-100
+      "
+                />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* ========================================== */}
-      {/* CLOSING SECTION */}
+      {/* WAVE SEPARATOR */}
       {/* ========================================== */}
-      <section className="py-16 lg:py-24 bg-gradient-to-b from-[#dcdcdc] to-[#FFFFFF] relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          {/* Logo */}
-          <div className="flex justify-center mb-6">
-            <img
-              src="/photo/logo.png"
-              alt="Brilliant Indonesia Logo"
-              className="w-16 h-16 lg:w-20 lg:h-20 object-contain"
+      <div className="relative w-full bg-gradient-to-b from-[#ffc08c] to-[#FF7400]">
+        <svg
+          className="editorial"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlnsXlink="http://www.w3.org/1999/xlink"
+          viewBox="0 24 150 28"
+          preserveAspectRatio="none"
+        >
+          <defs>
+            <path
+              id="gentle-wave"
+              d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
             />
+          </defs>
+          <g className="parallax1">
+            <use xlinkHref="#gentle-wave" x="50" y="3" fill="#FF9A56" />
+          </g>
+          <g className="parallax2">
+            <use xlinkHref="#gentle-wave" x="50" y="0" fill="#FF8547" />
+          </g>
+          <g className="parallax3">
+            <use xlinkHref="#gentle-wave" x="50" y="9" fill="#FF7A38" />
+          </g>
+          <g className="parallax4">
+            <use xlinkHref="#gentle-wave" x="50" y="6" fill="#FF7400" />
+          </g>
+        </svg>
+      </div>
+
+      {/* ========================================== */}
+      {/* ABOUT US SECTION */}
+      {/* ========================================== */}
+      <section id="aboutus" className="py-16 lg:py-40 bg-gradient-to-b from-[#FF7400] to-[#ffc08c] relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="text-center mb-16 lg:mb-20">
+            {/* Logo */}
+            <div className="flex justify-center mb-6">
+              <img
+                src="/photo/logo.webp"
+                alt="Brilliant Indonesia Logo"
+                className="w-16 h-16 lg:w-20 lg:h-20 object-contain"
+              />
+            </div>
+
+            {/* Heading */}
+            <h2 className="text-3xl lg:text-5xl font-extrabold text-brilliant-purple mb-4">
+              BRILLIANT INDONESIA
+            </h2>
+            <p className="text-2xl lg:text-3xl font-semibold text-white">
+              MITRA MERAIH SUKSES BERNILAI
+            </p>
           </div>
 
-          {/* Heading */}
-          <h2 className="text-3xl lg:text-5xl font-bold text-brilliant-purple mb-4">
-            BRILLIANT INDONESIA
-          </h2>
-          <p className="text-2xl lg:text-3xl font-semibold text-brilliant-yellow mb-12">
-            MITRA MERAIH SUKSES BERNILAI
-          </p>
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left Content */}
+            <div className="space-y-6">
+              <h2 className="text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight">
+                About Us
+              </h2>
+              <p className="text-gray-700 text-lg lg:text-xl leading-relaxed">
+                Brilliant Indonesia adalah lembaga bimbingan belajar yang
+                dirancang dengan teliti, bukan asal-asalan, untuk memberikan
+                pengalaman belajar yang menyenangkan dan efektif. Kami
+                berkomitmen membantu siswa meraih impian mereka dengan metode
+                yang terbukti berhasil.
+              </p>
+            </div>
 
-          {/* Group Photo Placeholder */}
-          <div className="max-w-4xl mx-auto">
-            <div className="aspect-[21/9] bg-gradient-to-br from-gray-200 to-gray-300 rounded-3xl shadow-xl flex items-center justify-center overflow-hidden">
-              <div className="text-center">
-                <div className="flex justify-center gap-4 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <div
-                      key={i}
-                      className="w-16 h-16 bg-gray-400/50 rounded-full"
-                    />
-                  ))}
+            {/* Right Image */}
+            <div className="relative">
+              <div
+                className="aspect-[4/3] bg-gradient-to-br from-gray-200 to-gray-300 shadow-2xl overflow-hidden"
+                style={{ borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%" }}
+              >
+                <img
+                  src="/photo/team-photo.jpg"
+                  alt="Brilliant Indonesia Team"
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.currentTarget.style.display = "none";
+                    e.currentTarget.nextSibling.style.display = "flex";
+                  }}
+                />
+                <div className="hidden w-full h-full items-center justify-center flex-col p-8 text-center">
+                  <ImageIcon className="w-16 h-16 text-gray-400 mb-4" />
+                  <p className="text-gray-500 font-medium">
+                    Foto Keluarga Besar Brilliant Indonesia
+                  </p>
                 </div>
-                <ImageIcon className="w-12 h-12 text-gray-400 mx-auto mb-2" />
-                <p className="text-gray-500 font-medium">
-                  Foto Keluarga Besar Brilliant Indonesia
-                </p>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================== */}
+      {/* OUR MISSION SECTION */}
+      {/* ========================================== */}
+      <section className="py-16 lg:py-24 bg-[#ffc08c] ] relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left Image */}
+            <div className="relative order-2 lg:order-1">
+              <div
+                className="aspect-[4/3] bg-gradient-to-br from-gray-200 to-gray-300 shadow-2xl overflow-hidden"
+                style={{ borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%" }}
+              >
+                <img
+                  src="/photo/mission-photo.jpg"
+                  alt="Our Mission"
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.currentTarget.style.display = "none";
+                    e.currentTarget.nextSibling.style.display = "flex";
+                  }}
+                />
+                <div className="hidden w-full h-full items-center justify-center flex-col p-8 text-center">
+                  <ImageIcon className="w-16 h-16 text-gray-400 mb-4" />
+                  <p className="text-gray-500 font-medium">Our Mission</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Content */}
+            <div className="space-y-6 order-1 lg:order-2">
+              <h2 className="text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight">
+                Our Mission: Helping Millions of Organizations Grow Better
+              </h2>
+              <p className="text-gray-700 text-lg lg:text-xl leading-relaxed">
+                Kami percaya tidak hanya pada pertumbuhan yang lebih besar,
+                tetapi juga pertumbuhan yang lebih baik. Dan pertumbuhan yang
+                lebih baik berarti menyelaraskan kesuksesan bisnis Anda dengan
+                kesuksesan siswa Anda. Win-win!
+              </p>
             </div>
           </div>
         </div>
@@ -1176,7 +1537,7 @@ const App = () => {
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <img
-                  src="/photo/logo.png"
+                  src="/photo/logo.webp"
                   alt="Brilliant Indonesia Logo"
                   className="w-12 h-12 object-contain"
                 />
