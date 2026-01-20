@@ -171,6 +171,7 @@ html {
     rgba(255, 255, 255, 0.1)
   );
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   animation: rotateBorder 3s linear infinite;
@@ -439,4 +440,81 @@ html {
     font-size: 2rem;
     line-height: 1.2;
   }
+}
+
+.glowing-outline {
+  position: relative;
+  border-radius: 20px;
+  overflow: visible;
+}
+
+.glowing-outline::before,
+.glowing-outline::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.glowing-outline::after {
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  box-shadow:
+    0 0 10px rgba(255, 228, 206, 0.8),
+    0 0 25px rgba(255, 255, 255, 0.7),
+    0 0 45px rgba(255, 255, 255, 0.6);
+}
+
+.glowing-outline::before {
+  filter: blur(14px);
+  box-shadow:
+    0 0 40px rgba(255, 160, 80, 0.6),
+    0 0 80px rgba(255, 120, 40, 0.5);
+}
+
+.glowing-outline:hover::before,
+.glowing-outline:hover::after {
+  opacity: 1;
+}
+
+/* Neon lamp – Yellow (for cards) */
+.glowing-outline-yellow {
+  position: relative;
+  border-radius: inherit;
+  overflow: visible;
+  z-index: 0; /* ⬅️ penting */
+}
+
+.glowing-outline-yellow::before,
+.glowing-outline-yellow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1; /* ⬅️ glow DI BELAKANG */
+}
+
+.glowing-outline-yellow::after {
+  border: 2px solid rgba(255, 215, 100, 0.9);
+  box-shadow:
+    0 0 8px rgba(255, 215, 100, 0.8),
+    0 0 18px rgba(255, 200, 80, 0.7),
+    0 0 32px rgba(255, 180, 60, 0.6);
+}
+
+.glowing-outline-yellow::before {
+  filter: blur(14px);
+  box-shadow:
+    0 0 35px rgba(255, 215, 100, 0.6),
+    0 0 70px rgba(255, 190, 70, 0.45);
+}
+
+.glowing-outline-yellow:hover::before,
+.glowing-outline-yellow:hover::after {
+  opacity: 1;
 }
