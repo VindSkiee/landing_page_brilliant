@@ -10,7 +10,7 @@ const Testimonials = () => {
 
   const getVisibleCards = useCallback(() => {
     if (typeof window !== "undefined") {
-      if (window.innerWidth >= 1024) return 3;
+      if (window.innerWidth > 1024) return 3;
       if (window.innerWidth >= 640) return 2;
       return 1;
     }
@@ -62,32 +62,69 @@ const Testimonials = () => {
       className="py-12 lg:py-24 pb-8 lg:pb-16 bg-gradient-to-b from-[#FFFFFF] to-[#F5F5F5] relative overflow-hidden"
     >
       {/* Decorative Circle SVGs */}
-      <div className="relative inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none z-0">
+        {/* Circle 1 */}
         <img
           src="/vector/orange_circle.svg"
           alt=""
-          className="hidden lg:block absolute w-[275px] h-[262px] opacity-100"
-          style={{ left: "41px", top: "90px", transform: "translateY(-50%)" }}
+          className="
+      absolute opacity-80
+
+      /* MOBILE */
+      w-24 h-24
+      top-16 left-4
+
+      /* TABLET */
+      sm:w-32 sm:h-32
+      sm:top-20 sm:left-8
+
+      /* DESKTOP */
+      lg:w-[275px] lg:h-[262px]
+      lg:top-[90px] lg:left-[41px]
+    "
         />
+
+        {/* Circle 2 */}
         <img
           src="/vector/orange_circle.svg"
           alt=""
-          className="hidden lg:block absolute w-[275px] h-[262px] opacity-100"
-          style={{
-            left: "740px",
-            top: "35px",
-            transform: "translateY(-50%)",
-          }}
+          className="
+      absolute opacity-80
+
+      /* MOBILE */
+      w-20 h-20
+      top-8 right-6
+
+      /* TABLET */
+      sm:w-28 sm:h-28
+      sm:top-12 sm:right-16
+
+      /* DESKTOP */
+      lg:w-[275px] lg:h-[262px]
+      lg:top-[35px] lg:left-[740px]
+    "
         />
+
+        {/* Circle 3 */}
         <img
           src="/vector/orange_circle.svg"
           alt=""
-          className="hidden lg:block absolute w-[275px] h-[262px] opacity-100"
-          style={{
-            left: "1200px",
-            top: "280px",
-            transform: "translateY(-50%)",
-          }}
+          className="
+      absolute opacity-80
+
+      /* MOBILE */
+      w-12 h-12
+      top-[-50] right-40
+
+      /* TABLET */
+      sm:w-36 sm:h-36
+      sm:bottom-20
+
+      /* DESKTOP */
+      lg:w-[275px] lg:h-[262px]
+      lg:top-[280px] lg:left-[1200px]
+      lg:translate-x-0
+    "
         />
       </div>
 
@@ -97,7 +134,7 @@ const Testimonials = () => {
           <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold leading-[1.15] mb-3 lg:mb-4">
             Mari Dengarkan Mereka yang Sudah Lulus
           </h2>
-          <p className="text-gray-600 text-base lg:text-lg">
+          <p className="text-gray-600 text-base lg:text-2xl xl:text-lg">
             Simak alumni-alumni terbaik kami
           </p>
         </div>
@@ -107,7 +144,7 @@ const Testimonials = () => {
           {/* Navigation Arrows */}
           <button
             onClick={prevTestimonial}
-            className="absolute left-2 sm:left-4 lg:left-0 z-20 text-gray-700 hover:text-black hover:scale-110 transition-all duration-300"
+            className="absolute left-[-5px] sm:left-4 lg:left-0 z-20 text-gray-700 hover:text-black hover:scale-110 transition-all duration-300"
             style={{ top: "50%", transform: "translateY(-50%)" }}
             aria-label="Previous testimonial"
           >
@@ -116,7 +153,7 @@ const Testimonials = () => {
 
           <button
             onClick={nextTestimonial}
-            className="absolute right-2 sm:right-4 lg:right-0 z-20 text-gray-700 hover:text-black hover:scale-110 transition-all duration-300"
+            className="absolute right-[-5px] sm:right-4 lg:right-0 z-20 text-gray-700 hover:text-black hover:scale-110 transition-all duration-300"
             style={{ top: "50%", transform: "translateY(-50%)" }}
             aria-label="Next testimonial"
           >
@@ -125,7 +162,7 @@ const Testimonials = () => {
 
           {/* Cards Container */}
           <div
-            className="relative overflow-hidden mx-10 sm:mx-12 lg:mx-16"
+            className="relative overflow-hidden mx-6 sm:mx-12 lg:mx-24 md:mx-6 xl:mx-16"
             style={{
               maskImage:
                 "linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%)",
@@ -139,16 +176,20 @@ const Testimonials = () => {
                 transform: `translateX(-${currentTestimonial * 100}%)`,
               }}
             >
-              {Array.from({ length: Math.ceil(testimonials.length / getVisibleCards()) }).map(
-                (_, groupIndex) => {
-                  const visibleCards = getVisibleCards();
-                  return (
+              {Array.from({
+                length: Math.ceil(testimonials.length / getVisibleCards()),
+              }).map((_, groupIndex) => {
+                const visibleCards = getVisibleCards();
+                return (
                   <div
                     key={groupIndex}
-                    className="w-full flex-shrink-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 justify-items-center"
+                    className="w-full flex-shrink-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 justify-items-center"
                   >
                     {testimonials
-                      .slice(groupIndex * visibleCards, groupIndex * visibleCards + visibleCards)
+                      .slice(
+                        groupIndex * visibleCards,
+                        groupIndex * visibleCards + visibleCards,
+                      )
                       .map((testimonial) => (
                         <div
                           key={testimonial.id}
@@ -176,8 +217,8 @@ const Testimonials = () => {
                             {/* Main Card */}
                             <div
                               className="group bg-white w-[280px] sm:w-[300px] flex flex-col overflow-visible shadow-lg mb-8 sm:mb-10 mt-8 sm:mt-10
-             transition-all duration-700 ease-out
-             hover:-translate-y-2 hover:shadow-2xl"
+                                  transition-all duration-700 ease-out
+                                  hover:-translate-y-2 hover:shadow-2xl"
                               style={{
                                 borderRadius: "59px",
                                 minHeight: expandedTestimonials[testimonial.id]
@@ -188,9 +229,9 @@ const Testimonials = () => {
                               {/* Image Container */}
                               <div
                                 className="bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center
-             overflow-hidden flex-shrink-0 shadow-lg
-             transition-transform duration-700 ease-out
-             group-hover:scale-[1.03]"
+                                  overflow-hidden flex-shrink-0 shadow-lg
+                                  transition-transform duration-700 ease-out
+                                  group-hover:scale-[1.03]"
                                 style={{
                                   width: "100%",
                                   height: "350px",
@@ -246,9 +287,9 @@ const Testimonials = () => {
                                   onClick={() =>
                                     toggleTestimonial(testimonial.id)
                                   }
-                                  className="w-full text-orange-500 text-sm font-semibold
-             transition-all duration-500 ease-out
-             hover:text-orange-600 hover:tracking-wide"
+                                  className="w-full text-orange-500 text-[10px] lg:text-sm font-semibold
+                                    transition-all duration-500 ease-out
+                                    hover:text-orange-600 hover:tracking-wide"
                                 >
                                   {expandedTestimonials[testimonial.id]
                                     ? "Sembunyikan"
@@ -260,9 +301,8 @@ const Testimonials = () => {
                         </div>
                       ))}
                   </div>
-                  );
-                },
-              )}
+                );
+              })}
             </div>
           </div>
         </div>

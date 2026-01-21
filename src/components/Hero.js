@@ -66,7 +66,27 @@ const Hero = ({ scrollToSection }) => {
     <section
       id="hero"
       ref={heroRef}
-      className="relative min-h-screen pt-8 lg:pt-8 pb-0 overflow-hidden bg-white"
+      className="
+    relative
+    overflow-hidden
+    bg-white
+
+    /* MOBILE */
+    h-[67rem]
+
+    md:h-[65rem]
+
+    sm:h-[50rem]
+
+    lg:h-[46rem]
+
+    xl:min-h-screen
+    xl:h-auto
+
+    pt-8
+    lg:pt-8
+    pb-0
+  "
     >
       {/* Background Image with Opacity */}
       <div
@@ -95,7 +115,16 @@ const Hero = ({ scrollToSection }) => {
           >
             {/* Main Heading */}
             <h1
-              className="text-2xl text-center lg:text-left sm:text-2xl lg:text-4xl xl:text-5xl font-extrabold leading-tight h-[7rem] sm:h-[8rem] lg:h-[9rem] mb-2 lg:mb-4 relative"
+              className="
+                text-[1.40rem] text-center lg:text-left
+                sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl
+                font-extrabold leading-tight
+                max-w-[30rem] sm:max-w-none
+                mx-auto lg:mx-0
+                h-[6rem] sm:h-[8rem] md:h-[5rem] lg:h-[9rem]
+                mb-2 lg:mb-4
+                relative
+              "
               style={{ transitionDelay: "0ms" }}
             >
               <span className="invisible" aria-hidden="true">
@@ -132,7 +161,7 @@ const Hero = ({ scrollToSection }) => {
 
             {/* Subheading */}
             <p
-              className="text-gray-700 text-center lg:text-left text-sm lg:text-1xl max-w-xl font-medium h-[4.5rem] lg:h-[4rem] relative"
+              className="text-gray-700 text-center lg:text-left text-[0.80rem] lg:text-1xl max-w-xl font-medium h-[4.5rem] lg:h-[4rem] relative"
               style={{ transitionDelay: "200ms" }}
             >
               <span className="invisible" aria-hidden="true">
@@ -152,14 +181,13 @@ const Hero = ({ scrollToSection }) => {
 
             {/* University Logos */}
             <div
-  className="
-    flex flex-wrap
-    justify-center sm:justify-start
-    items-center
-    gap-4 sm:gap-8 lg:gap-12
-  "
->
-
+              className="
+                flex flex-wrap
+                justify-center sm:justify-start
+                items-center md:justify-center lg:justify-start xl:justify-start
+                gap-4 sm:gap-8 lg:gap-12
+              "
+            >
               {[
                 { name: "UGM", fileName: "logo-UGM.webp" },
                 { name: "ITB", fileName: "logo-ITB.webp" },
@@ -194,9 +222,9 @@ const Hero = ({ scrollToSection }) => {
             {/* CTA Buttons */}
             <div
               className="
-    flex flex-col sm:flex-row  
-    gap-3 sm:gap-4
-  "
+                  flex flex-col sm:flex-row  
+                  gap-3 sm:gap-4 justify-start md:justify-center lg:justify-start xl:justify-start
+                "
               style={{ transitionDelay: "400ms" }}
             >
               <a
@@ -252,7 +280,7 @@ const Hero = ({ scrollToSection }) => {
           >
             <div className="relative z-10 w-full h-[36rem] lg:h-[40rem] pb-8">
               {/* SVG Blob Background */}
-              <div className="absolute lg:-right-36 xl:-right-48 top-[65%] -translate-y-1/2 z-0">
+              <div className="absolute lg:-right-48 xl:-right-48 lg:top-28 top-[-18%] right-[-30rem] z-0">
                 <BlobShape
                   className="w-full h-full object-contain"
                   style={{ width: "580px", height: "595px" }}
@@ -260,9 +288,20 @@ const Hero = ({ scrollToSection }) => {
               </div>
 
               {/* 3 People Container */}
-              <div className="relative z-10 flex items-end justify-end pr-0 lg:-mr-10 xl:-mr-20 pb-8">
-                {/* Person 1 - Siswa SMA */}
-                <div className="absolute bottom-0 left-[8rem] lg:left-[10rem] w-64 h-96 sm:w-72 sm:h-[24rem] lg:w-80 lg:h-[36rem] overflow-hidden translate-y-32 filter saturate-200">
+              <div className="relative z-10 pr-0 lg:-mr-10 xl:-mr-20 pb-8">
+                {/* Person 1 - Siswa SMA (TETAP ADA DI MOBILE) */}
+                <div
+                  className="
+                    absolute
+                    bottom-[-27rem] 
+                    left-[5rem] -translate-x-1/2
+                    sm:left-[6rem] sm:translate-x-0
+                    xl:left-[9rem] xl:bottom-[-40rem]
+                    w-64 sm:w-72 xl:w-80 lg:bottom-[-40rem]
+                    h-[26rem] sm:h-[28rem] lg:h-[36rem]
+                    filter saturate-200
+                  "
+                >
                   <img
                     src="/photo/1_orang_sma.webp"
                     alt="Anak SMA"
@@ -270,8 +309,23 @@ const Hero = ({ scrollToSection }) => {
                   />
                 </div>
 
-                {/* Person 2 - ASN */}
-                <div className="absolute bottom-0 left-[8rem] lg:left-[17rem] z-30 w-56 sm:w-64 lg:w-72 h-[28rem] sm:h-[20rem] lg:h-[28rem] overflow-hidden translate-y-40 filter saturate-150">
+                {/* Person 2 - ASN (HILANG DI MOBILE) */}
+                <div
+                  className="
+                    hidden
+                    xl:block
+
+                    absolute
+                    bottom-[-40rem]
+                    left-[17rem]
+
+                    w-72
+                    h-[28rem]
+
+                    z-30
+                    filter saturate-150
+                  "
+                >
                   <img
                     src="/photo/1_orang_asn.webp"
                     alt="ASN"
@@ -279,8 +333,22 @@ const Hero = ({ scrollToSection }) => {
                   />
                 </div>
 
-                {/* Person 3 - Polisi */}
-                <div className="w-64 h-96 sm:w-72 sm:h-[28rem] lg:w-80 lg:h-[32rem] overflow-hidden flex-shrink-0 translate-x-19 lg:translate-x-32 translate-y-40 filter saturate-150">
+                {/* Person 3 - Polisi (HILANG DI MOBILE) */}
+                <div
+                  className="
+                    hidden
+                    xl:block
+
+                    absolute
+                    bottom-[-40rem]
+                    right-[-8rem]
+
+                    w-80
+                    h-[34rem]
+
+                    filter saturate-150
+                  "
+                >
                   <img
                     src="/photo/1_orang_polisi.webp"
                     alt="Polisi"

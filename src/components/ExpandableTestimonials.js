@@ -96,7 +96,7 @@ const ExpandableTestimonials = () => {
               href="#curve"
               startOffset="50%"
               textAnchor="middle"
-              className="text-base sm:text-lg lg:text-2xl"
+              className="text-2xl font-extrabold sm:text-lg lg:text-2xl"
             >
               Ayo Lihat Alumni Brilliant Lain!!
             </textPath>

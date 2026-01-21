@@ -6,30 +6,30 @@ const CTABanner = () => {
     <>
       {/* CTA Banner Section */}
       <section className="py-12 lg:py-40 bg-gradient-to-b from-[#F5F5F5] to-[#ffc08c]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-48">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-28 lg:px-20 xl:px-48">
           <div
             className="relative bg-gradient-to-r from-[#FF7400] to-[#FFC100] rounded-[29px] overflow-visible shadow-2xl py-6 lg:py-8"
             style={{ minHeight: "180px" }}
           >
             <div className="grid lg:grid-cols-2 gap-8 items-center">
               {/* Left Content */}
-              <div className="p-6 lg:p-8 space-y-4 lg:space-y-6">
+              <div className="p-4 lg:p-8 space-y-4 lg:space-y-6">
                 <h2 className="text-2xl sm:text-3xl lg:text-2xl font-bold font-poppins text-white leading-tight">
                   Sudah siap untuk{" "}
                   <span className="text-brilliant-purple font-extrabold font-poppins">
-                    Mendaftar?
+                    Daftar?
                   </span>
                 </h2>
-                <p className="text-white text-base lg:text-1xl font-medium leading-relaxed">
+                <p className="text-white text-[12px] lg:text-1xl xl:text-1xl font-medium leading-relaxed">
                   Mari bergabung bersama Brilliant Indonesia untuk meraih
                   sekolah/perguruan tinggi Impianmu!
                 </p>
-                <div className="flex flex-wrap gap-3 pt-2 py-2 lg:py-4">
+                <div className="flex flex-wrap gap-3 pt-2 py-2 lg:py-2 xl:py-4 justify-center lg:justify-start xl:justify-start">
                   <a
                     href="https://wa.me/6281366369621"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-white text-brilliant-orange px-4 py-2.5 lg:py-3 rounded-[10px] text-sm lg:text-base font-bold hover:scale-105 hover:shadow-lg transition-all duration-300"
+                    className="bg-white text-brilliant-orange px-3 py-2.5 lg:py-3 rounded-[10px] text-sm lg:text-base font-bold hover:scale-105 hover:shadow-lg transition-all duration-300"
                   >
                     Hubungi Kami
                   </a>
@@ -50,7 +50,19 @@ const CTABanner = () => {
                 <img
                   src="/photo/sma_cta_section.webp"
                   alt="Daftar Sekarang"
-                  className="absolute bottom-6 right-28 h-[400px] w-auto object-contain translate-y-20 -scale-x-100"
+                  className="
+                    absolute
+                    right-28
+                    h-[400px]
+                    w-auto
+                    object-contain
+                    -scale-x-100
+
+                    bottom-8        /* iPad Pro (lg) */
+                    xl:bottom-6      /* Desktop besar */
+
+                    translate-y-20
+                  "
                 />
               </div>
             </div>
