@@ -88,7 +88,7 @@ const Programs = () => {
             >
               {/* Image Container */}
               <div
-                className="relative min-h-[220px] group-hover:min-h-[236px]
+                className="relative min-h-[200px] group-hover:min-h-[220px]
                    overflow-visible flex-shrink-0
                    transition-[min-height] duration-500
                    ease-[cubic-bezier(0.34,1.56,0.64,1)]"
@@ -102,7 +102,7 @@ const Programs = () => {
                 <img
                   src={`/photo/${program.image}`}
                   alt={program.title}
-                  className="w-full h-[220px] object-cover translate-x-[-3px]
+                  className="w-full h-[205px] object-cover translate-x-[-3px]
                      transition-transform duration-500 ease-out
                      group-hover:scale-[1.15]"
                 />
