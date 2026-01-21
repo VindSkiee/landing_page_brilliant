@@ -6,7 +6,7 @@ const Programs = () => {
   return (
     <section
       id="programs"
-      className="py-16 lg:py-56 bg-white relative overflow-hidden"
+      className="py-12 lg:py-56 bg-white relative overflow-hidden"
     >
       {/* Decorative Background Vectors */}
       <div className="absolute inset-0 pointer-events-none">
@@ -56,8 +56,8 @@ const Programs = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-12 lg:mb-16">
-          <h2 className="text-3xl lg:text-5xl font-extrabold leading-[1.15] mb-4">
+        <div className="text-center mb-8 lg:mb-16">
+          <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold leading-[1.15] mb-3 lg:mb-4">
             <span className="bg-gradient-to-r from-[#FF0000] to-[#FF7400] bg-clip-text text-transparent">
               Program Bimbel{" "}
             </span>
@@ -67,28 +67,33 @@ const Programs = () => {
               yang Tersedia
             </span>
           </h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-600 text-base lg:text-lg max-w-2xl mx-auto">
             Berbagai macam pilihan program bimbel yang dapat dipilih sesuai
             kebutuhanmu!
           </p>
         </div>
 
         {/* Programs Grid */}
-        <div className="flex flex-wrap justify-center gap-6 lg:gap-12 py-20">
+        <div className="flex flex-wrap justify-center gap-4 sm:gap-6 lg:gap-9 py-12 lg:py-24">
           {programs.map((program, index) => (
             <div
               key={program.id}
-              className="group bg-white shadow-lg hover:shadow-2xl transition-all duration-500 overflow-visible card-hover w-[330px] min-h-[400px] flex flex-col relative hover:z-10 glowing-outline-yellow"
+              className="group relative w-full max-w-[340px] sm:max-w-[360px] lg:w-[380px] min-h-[440px] sm:min-h-[460px] bg-white flex flex-col overflow-visible
+                 shadow-xl hover:shadow-2xl transition-all duration-500
+                 hover:z-10 glowing-outline-yellow"
               style={{
                 animationDelay: `${index * 100}ms`,
-                borderRadius: "37px",
+                borderRadius: "42px",
               }}
             >
               {/* Image Container */}
               <div
-                className="relative min-h-[180px] group-hover:min-h-[198px] overflow-visible flex-shrink-0 transition-[min-height] duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]"
+                className="relative min-h-[220px] group-hover:min-h-[236px]
+                   overflow-visible flex-shrink-0
+                   transition-[min-height] duration-500
+                   ease-[cubic-bezier(0.34,1.56,0.64,1)]"
                 style={{
-                  borderRadius: "37px 37px 0 0",
+                  borderRadius: "42px 42px 0 0",
                   backgroundImage: "url('/vector/program_bg.svg')",
                   backgroundSize: "cover",
                   backgroundPosition: "center",
@@ -97,30 +102,31 @@ const Programs = () => {
                 <img
                   src={`/photo/${program.image}`}
                   alt={program.title}
-                  className="w-full h-[180px] object-cover translate-x-[-4px] transition-transform duration-300 ease-out group-hover:scale-[1.2]"
+                  className="w-full h-[220px] object-cover translate-x-[-3px]
+                     transition-transform duration-500 ease-out
+                     group-hover:scale-[1.15]"
                 />
-
-                <div className="hidden absolute inset-0 items-center justify-center bg-gradient-to-b from-transparent to-black/10">
-                  <div className="text-center">
-                    <div className="w-24 h-24 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-2">
-                      <ImageIcon className="w-12 h-12 text-white/80" />
-                    </div>
-                  </div>
-                </div>
               </div>
 
               {/* Content */}
-              <div className="p-6 flex-1 flex flex-col justify-between">
+              <div className="p-8 flex-1 flex flex-col justify-between">
                 <div>
-                  <div className="h-[4.5rem] mb-4 flex flex-col justify-center items-center">
-                    <h3 className="text-lg font-bold text-gray-900 group-hover:font-black group-hover:text-brilliant-purple leading-[1.15] transition-colors text-center">
+                  <div className="mb-5 flex flex-col items-center text-center">
+                    <h3
+                      className="text-xl font-extrabold text-gray-900
+                           group-hover:text-brilliant-purple group-hover:font-black transition-colors leading-tight"
+                    >
                       {program.title}
                     </h3>
-                    <h4 className="text-lg font-bold text-gray-900 group-hover:font-black group-hover:text-brilliant-red leading-[1.15] transition-colors text-center">
+                    <h4
+                      className="text-xl font-extrabold text-gray-900
+                           group-hover:text-brilliant-red transition-colors leading-tight"
+                    >
                       {program.subtitle}
                     </h4>
                   </div>
-                  <p className="text-gray-600 text-sm text-center leading-relaxed">
+
+                  <p className="text-gray-600 text-base leading-relaxed text-center">
                     {program.description}
                   </p>
                 </div>

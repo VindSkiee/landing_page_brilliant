@@ -59,20 +59,20 @@ const Testimonials = () => {
   return (
     <section
       id="testimonials"
-      className="py-16 lg:py-24 bg-gradient-to-b from-[#FFFFFF] to-[#F5F5F5] relative overflow-hidden"
+      className="py-12 lg:py-24 pb-8 lg:pb-16 bg-gradient-to-b from-[#FFFFFF] to-[#F5F5F5] relative overflow-hidden"
     >
       {/* Decorative Circle SVGs */}
       <div className="relative inset-0 pointer-events-none">
         <img
           src="/vector/orange_circle.svg"
           alt=""
-          className="absolute w-[275px] h-[262px] opacity-100"
+          className="hidden lg:block absolute w-[275px] h-[262px] opacity-100"
           style={{ left: "41px", top: "90px", transform: "translateY(-50%)" }}
         />
         <img
           src="/vector/orange_circle.svg"
           alt=""
-          className="absolute w-[275px] h-[262px] opacity-100"
+          className="hidden lg:block absolute w-[275px] h-[262px] opacity-100"
           style={{
             left: "740px",
             top: "35px",
@@ -82,7 +82,7 @@ const Testimonials = () => {
         <img
           src="/vector/orange_circle.svg"
           alt=""
-          className="absolute w-[275px] h-[262px] opacity-100"
+          className="hidden lg:block absolute w-[275px] h-[262px] opacity-100"
           style={{
             left: "1200px",
             top: "280px",
@@ -93,11 +93,11 @@ const Testimonials = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-12 lg:mb-16">
-          <h2 className="text-3xl lg:text-5xl font-extrabold leading-[1.15] mb-4">
+        <div className="text-center mb-8 lg:mb-16">
+          <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold leading-[1.15] mb-3 lg:mb-4">
             Mari Dengarkan Mereka yang Sudah Lulus
           </h2>
-          <p className="text-gray-600 text-lg">
+          <p className="text-gray-600 text-base lg:text-lg">
             Simak alumni-alumni terbaik kami
           </p>
         </div>
@@ -107,30 +107,30 @@ const Testimonials = () => {
           {/* Navigation Arrows */}
           <button
             onClick={prevTestimonial}
-            className="absolute left-4 lg:left-0 z-20 text-gray-700 hover:text-black hover:scale-125 transition-all duration-1000"
-            style={{ top: "280px" }}
+            className="absolute left-2 sm:left-4 lg:left-0 z-20 text-gray-700 hover:text-black hover:scale-110 transition-all duration-300"
+            style={{ top: "50%", transform: "translateY(-50%)" }}
             aria-label="Previous testimonial"
           >
-            <ChevronLeftIcon className="w-10 h-10 lg:w-12 lg:h-12 drop-shadow-lg" />
+            <ChevronLeftIcon className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 drop-shadow-lg" />
           </button>
 
           <button
             onClick={nextTestimonial}
-            className="absolute right-4 lg:right-0 z-20 text-gray-700 hover:text-black hover:scale-125 transition-all duration-1000"
-            style={{ top: "280px" }}
+            className="absolute right-2 sm:right-4 lg:right-0 z-20 text-gray-700 hover:text-black hover:scale-110 transition-all duration-300"
+            style={{ top: "50%", transform: "translateY(-50%)" }}
             aria-label="Next testimonial"
           >
-            <ChevronRightIcon className="w-10 h-10 lg:w-12 lg:h-12 drop-shadow-lg" />
+            <ChevronRightIcon className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 drop-shadow-lg" />
           </button>
 
           {/* Cards Container */}
           <div
-            className="relative overflow-hidden mx-8 lg:mx-16"
+            className="relative overflow-hidden mx-10 sm:mx-12 lg:mx-16"
             style={{
               maskImage:
-                "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+                "linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%)",
               WebkitMaskImage:
-                "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+                "linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%)",
             }}
           >
             <div
@@ -139,48 +139,50 @@ const Testimonials = () => {
                 transform: `translateX(-${currentTestimonial * 100}%)`,
               }}
             >
-              {Array.from({ length: Math.ceil(testimonials.length / 3) }).map(
-                (_, groupIndex) => (
+              {Array.from({ length: Math.ceil(testimonials.length / getVisibleCards()) }).map(
+                (_, groupIndex) => {
+                  const visibleCards = getVisibleCards();
+                  return (
                   <div
                     key={groupIndex}
-                    className="w-full flex-shrink-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center"
+                    className="w-full flex-shrink-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 justify-items-center"
                   >
                     {testimonials
-                      .slice(groupIndex * 3, groupIndex * 3 + 3)
+                      .slice(groupIndex * visibleCards, groupIndex * visibleCards + visibleCards)
                       .map((testimonial) => (
                         <div
                           key={testimonial.id}
-                          className="flex flex-col items-center pt-8"
+                          className="flex flex-col items-center pt-6 sm:pt-8"
                         >
                           <div className="relative">
                             {/* University Badge */}
                             <div
                               className="absolute left-1/2 -translate-x-1/2 bg-white text-white
-             flex items-center justify-center z-10 shadow-lg mt-10
+             flex items-center justify-center z-10 shadow-lg mt-8 sm:mt-10
              transition-all duration-700 ease-out
              group-hover:shadow-2xl"
                               style={{
-                                width: "275px",
-                                height: "67px",
+                                width: "260px",
+                                height: "60px",
                                 borderRadius: "14px",
-                                top: "-33px",
+                                top: "-30px",
                               }}
                             >
-                              <p className="font-bold text-sm px-4 text-center truncate">
+                              <p className="font-bold text-xs sm:text-sm px-3 sm:px-4 text-center truncate">
                                 {testimonial.university}
                               </p>
                             </div>
 
                             {/* Main Card */}
                             <div
-                              className="group bg-white w-[300px] flex flex-col overflow-visible shadow-lg mb-10 mt-10
+                              className="group bg-white w-[280px] sm:w-[300px] flex flex-col overflow-visible shadow-lg mb-8 sm:mb-10 mt-8 sm:mt-10
              transition-all duration-700 ease-out
              hover:-translate-y-2 hover:shadow-2xl"
                               style={{
                                 borderRadius: "59px",
                                 minHeight: expandedTestimonials[testimonial.id]
                                   ? "auto"
-                                  : "447px",
+                                  : "420px",
                               }}
                             >
                               {/* Image Container */}
@@ -190,8 +192,8 @@ const Testimonials = () => {
              transition-transform duration-700 ease-out
              group-hover:scale-[1.03]"
                                 style={{
-                                  width: "300px",
-                                  height: "371px",
+                                  width: "100%",
+                                  height: "350px",
                                   borderRadius: "59px 59px 40px 40px",
                                 }}
                               >
@@ -258,7 +260,8 @@ const Testimonials = () => {
                         </div>
                       ))}
                   </div>
-                ),
+                  );
+                },
               )}
             </div>
           </div>

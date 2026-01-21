@@ -22,7 +22,7 @@ const Navbar = ({ scrollToSection }) => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-[9999] pt-4 px-4">
       <div
-        className={`max-w-6xl mx-auto rounded-full shadow-2xl transition-all duration-500 ${
+        className={`max-w-6xl mx-auto rounded-lg shadow-3xl lg:rounded-full lg:shadow-2xl transition-all duration-500 ${
           isScrolled
             ? "liquid-glass-navbar liquid-glass-effect liquid-shimmer liquid-shadow"
             : "bg-gradient-to-r from-[#FF2E2E] to-[#DF2222] liquid-ripple"
@@ -90,20 +90,28 @@ const Navbar = ({ scrollToSection }) => {
               <img
                 src="/photo/logo.webp"
                 alt="Brilliant Indonesia Logo"
-                className="w-10 h-10 lg:w-12 lg:h-12 object-contain"
+                className="w-12 h-12 lg:w-12 lg:h-12 object-contain"
               />
-              <div className="hidden sm:block">
+              <div className="block">
                 <div
-                  className={`font-extrabold text-sm lg:text-base leading-tight transition-colors duration-500 ${
-                    isScrolled ? "text-gray-900" : "text-white"
-                  }`}
+                  className={`
+                    font-extrabold
+                    text-xs sm:text-sm lg:text-base
+                    leading-tight
+                    transition-colors duration-500
+                    ${isScrolled ? "text-gray-900" : "text-white"}
+                  `}
                 >
                   BRILLIANT INDONESIA
                 </div>
                 <div
-                  className={`text-[10px] lg:text-xs font-medium leading-tight transition-colors duration-500 ${
-                    isScrolled ? "text-black" : "text-white"
-                  }`}
+                  className={`
+                    text-[9px] sm:text-[10px] lg:text-xs
+                    font-medium
+                    leading-tight
+                    transition-colors duration-500
+                    ${isScrolled ? "text-black" : "text-white"}
+                  `}
                 >
                   MITRA MERAIH SUKSES BERNILAI
                 </div>
@@ -150,11 +158,21 @@ const Navbar = ({ scrollToSection }) => {
                 href="https://wa.me/6281366369621"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 bg-gradient-to-r from-[#47D029] to-[#2FA91D] text-white px-5 py-2.5 lg:px-6 lg:py-3 rounded-full font-medium text-sm hover:scale-105 hover:brightness-110 transition-all duration-300 shadow-lg"
+                className="
+                  hidden lg:flex
+                  items-center gap-2
+                  bg-gradient-to-r from-[#47D029] to-[#2FA91D]
+                  text-white
+                  px-5 py-2.5 lg:px-6 lg:py-3
+                  rounded-full
+                  font-medium text-sm
+                  hover:scale-105 hover:brightness-110
+                  transition-all duration-300
+                  shadow-lg
+                "
               >
                 <WhatsAppIcon className="w-4 h-4 lg:w-5 lg:h-5" />
-                <span className="hidden sm:inline font-bold">Chat WA</span>
-                <span className="sm:hidden">WA</span>
+                <span className="font-bold">Chat WA</span>
               </a>
 
               {/* Mobile Menu Button */}

@@ -5,36 +5,36 @@ const AboutUs = () => {
   return (
     <section
       id="aboutus"
-      className="py-16 lg:py-40 bg-gradient-to-b from-[#FF7400] to-[#ffc08c] relative overflow-hidden"
+      className="py-12 lg:py-40 bg-gradient-to-b from-[#FF7400] to-[#ffc08c] relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16 lg:mb-20">
+        <div className="text-center mb-12 lg:mb-20">
           {/* Logo */}
-          <div className="flex justify-center mb-6">
+          <div className="flex justify-center mb-4 lg:mb-6">
             <img
               src="/photo/logo.webp"
               alt="Brilliant Indonesia Logo"
-              className="w-16 h-16 lg:w-20 lg:h-20 object-contain"
+              className="w-16 h-16 lg:w-52 lg:h-52 object-contain"
             />
           </div>
 
           {/* Heading */}
-          <h2 className="text-3xl lg:text-5xl font-extrabold text-brilliant-purple mb-4">
+          <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-brilliant-purple mb-3 lg:mb-4">
             BRILLIANT INDONESIA
           </h2>
-          <p className="text-2xl lg:text-3xl font-semibold text-white">
+          <p className="text-xl sm:text-2xl lg:text-3xl font-semibold text-white">
             MITRA MERAIH SUKSES BERNILAI
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Left Content */}
-          <div className="space-y-6">
-            <h2 className="text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight">
+          <div className="space-y-4 lg:space-y-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight">
               About Us
             </h2>
-            <p className="text-gray-700 text-lg lg:text-xl leading-relaxed">
+            <p className="text-gray-700 text-base sm:text-lg lg:text-xl leading-relaxed">
               Brilliant Indonesia adalah lembaga bimbingan belajar yang
               dirancang dengan teliti, bukan asal-asalan, untuk memberikan
               pengalaman belajar yang menyenangkan dan efektif. Kami berkomitmen

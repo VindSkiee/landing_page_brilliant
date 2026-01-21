@@ -3,9 +3,9 @@ import { Image as ImageIcon } from "lucide-react";
 
 const Mission = () => {
   return (
-    <section className="py-16 lg:py-24 bg-[#ffc08c] relative overflow-hidden">
+    <section className="py-12 lg:py-24 bg-[#ffc08c] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Left Image */}
           <div className="relative order-2 lg:order-1">
             <div
@@ -29,11 +29,11 @@ const Mission = () => {
           </div>
 
           {/* Right Content */}
-          <div className="space-y-6 order-1 lg:order-2">
-            <h2 className="text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight">
+          <div className="space-y-4 lg:space-y-6 order-1 lg:order-2">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight">
               Our Mission: Helping Millions of Organizations Grow Better
             </h2>
-            <p className="text-gray-700 text-lg lg:text-xl leading-relaxed">
+            <p className="text-gray-700 text-base sm:text-lg lg:text-xl leading-relaxed">
               Kami percaya tidak hanya pada pertumbuhan yang lebih besar, tetapi
               juga pertumbuhan yang lebih baik. Dan pertumbuhan yang lebih baik
               berarti menyelaraskan kesuksesan bisnis Anda dengan kesuksesan

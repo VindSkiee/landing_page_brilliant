@@ -56,6 +56,7 @@ export const testimonials = [
     id: 1,
     name: "Kiagus Muhammad Zaky",
     university: "Universitas Gadjah Mada",
+    // image: "/photo/testimonial/kiagusMuhammadZaky.webp",
     quote:
       "Berkat Brilliant Indonesia, saya berhasil lolos SNBT dan diterima di PTN impian. Metode belajarnya sangat efektif dan mudah dipahami!",
   },
@@ -63,6 +64,7 @@ export const testimonials = [
     id: 2,
     name: "Rafit Zufar",
     university: "Institut Teknologi Bandung",
+    // image: "/photo/testimonial/rafitZufar.webp",
     quote:
       "Mentor-mentornya sangat berpengalaman dan sabar dalam mengajar. Materi yang diberikan lengkap dan up-to-date sesuai kurikulum terbaru.",
   },
@@ -70,6 +72,7 @@ export const testimonials = [
     id: 3,
     name: "Kenzie Muhammad Rizieq",
     university: "Universitas Diponegoro",
+    image: "/photo/testimonial/kenzieMuhammadRizieq.webp",
     quote:
       "Program garansi tahun depan membuat saya lebih tenang dalam belajar. Alhamdulillah lolos di percobaan pertama!",
   },
@@ -77,6 +80,7 @@ export const testimonials = [
     id: 4,
     name: "Anisa Putri Ramadhani",
     university: "Universitas Indonesia",
+    // image: "/photo/testimonial/anisaPutriRamadhani.webp",
     quote:
       "Bimbel terbaik yang pernah saya ikuti! Sistem belajarnya fleksibel, bisa online maupun offline sesuai kebutuhan.",
   },
@@ -84,6 +88,7 @@ export const testimonials = [
     id: 5,
     name: "Muhammad Faisal Akbar",
     university: "Universitas Padjadjaran",
+    // image: "/photo/testimonial/muhammadFaisalAkbar.webp",
     quote:
       "Lolos CPNS berkat bimbingan dari Brilliant Indonesia. Tryout-nya sangat membantu untuk persiapan ujian sesungguhnya.",
   },
@@ -91,6 +96,7 @@ export const testimonials = [
     id: 6,
     name: "Siti Nurhaliza",
     university: "Politeknik Negeri Jakarta",
+    // image: "/photo/testimonial/sitiNurhaliza.webp",
     quote:
       "Dari awal tidak percaya diri, sekarang sudah diterima di Kedinasan. Terima kasih Brilliant Indonesia!",
   },

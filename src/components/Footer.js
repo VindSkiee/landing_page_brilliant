@@ -32,7 +32,7 @@ const Footer = () => {
               </p>
               <div className="flex gap-3">
                 <a
-                  href="https://instagram.com/brilliantindonesia"
+                  href="https://instagram.com/bbrilliantindonesia"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-brilliant-yellow hover:text-brilliant-purple transition-all duration-300"
@@ -41,7 +41,7 @@ const Footer = () => {
                   <InstagramIcon className="w-5 h-5" />
                 </a>
                 <a
-                  href="https://tiktok.com/@brilliantindonesia"
+                  href="https://tiktok.com/@bbrilliantindonesia"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-brilliant-yellow hover:text-brilliant-purple transition-all duration-300"
@@ -49,7 +49,7 @@ const Footer = () => {
                 >
                   <TikTokIcon className="w-5 h-5" />
                 </a>
-                <a
+                {/* <a
                   href="https://youtube.com/brilliantindonesia"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -57,7 +57,7 @@ const Footer = () => {
                   aria-label="YouTube"
                 >
                   <Youtube className="w-5 h-5" />
-                </a>
+                </a> */}
               </div>
             </div>
           </div>
@@ -78,13 +78,15 @@ const Footer = () => {
                 <span>+62 812-7429-2390</span>
               </a>
               <a
-                href="mailto:info@brilliantindonesia.com"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=bbrilliantindonesia@gmail.com&su=Kerja Sama&body=Halo%20Brilliant%20Indonesia,%0A%0ASaya%20ingin%20bertanya..."
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-3 text-white/80 hover:text-white transition-colors group"
               >
                 <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-brilliant-yellow group-hover:text-brilliant-purple transition-all">
                   <Mail className="w-5 h-5" />
                 </div>
-                <span>info@brilliantindonesia.com</span>
+                <span>bbrilliantindonesia@gmail.com</span>
               </a>
             </div>
           </div>

@@ -11,7 +11,7 @@ const Hero = ({ scrollToSection }) => {
   const [subheadingComplete, setSubheadingComplete] = useState(false);
 
   const fullHeading =
-    "Lolos Tes TKA, SNBT, SKD. Tidak Lolos? Garansi Tahun Depan";
+    "Lulus Tes TKA, SNBT, SKD. Tidak Lulus? Gratis Tahun Depan";
   const fullSubheading =
     "Bimbingan belajar offline & online terbaik. Dibimbing langsung oleh alumni UGM, ITB, & UNDIP dengan metode praktis tanpa ribet.";
 
@@ -95,13 +95,13 @@ const Hero = ({ scrollToSection }) => {
           >
             {/* Main Heading */}
             <h1
-              className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold leading-tight h-[7rem] sm:h-[8rem] lg:h-[9rem] mb-2 lg:mb-4 relative"
+              className="text-2xl text-center lg:text-left sm:text-2xl lg:text-4xl xl:text-5xl font-extrabold leading-tight h-[7rem] sm:h-[8rem] lg:h-[9rem] mb-2 lg:mb-4 relative"
               style={{ transitionDelay: "0ms" }}
             >
               <span className="invisible" aria-hidden="true">
-                Lolos Tes <span>TKA, SNBT, SKD.</span>
+                Lulus Tes <span>TKA, SNBT, SKD.</span>
                 <br />
-                Tidak Lolos? Garansi <span>Tahun Depan</span>
+                Tidak Lulus? Gratis <span>Tahun Depan</span>
               </span>
               <span className="absolute inset-0">
                 {displayedHeading.split(" ").map((word, index, arr) => {
@@ -117,9 +117,7 @@ const Hero = ({ scrollToSection }) => {
                   return (
                     <span key={index}>
                       {isLineBreak && <br />}
-                      <span
-                        className={isHighlight ? "text-brilliant-red" : ""}
-                      >
+                      <span className={isHighlight ? "text-brilliant-red" : ""}>
                         {word}
                       </span>
                       {index < arr.length - 1 ? " " : ""}
@@ -134,7 +132,7 @@ const Hero = ({ scrollToSection }) => {
 
             {/* Subheading */}
             <p
-              className="text-gray-700 text-base lg:text-1xl max-w-xl font-medium h-[4.5rem] lg:h-[4rem] relative"
+              className="text-gray-700 text-center lg:text-left text-sm lg:text-1xl max-w-xl font-medium h-[4.5rem] lg:h-[4rem] relative"
               style={{ transitionDelay: "200ms" }}
             >
               <span className="invisible" aria-hidden="true">
@@ -153,7 +151,15 @@ const Hero = ({ scrollToSection }) => {
             </p>
 
             {/* University Logos */}
-            <div className="flex items-center gap-12 flex-wrap">
+            <div
+  className="
+    flex flex-wrap
+    justify-center sm:justify-start
+    items-center
+    gap-4 sm:gap-8 lg:gap-12
+  "
+>
+
               {[
                 { name: "UGM", fileName: "logo-UGM.webp" },
                 { name: "ITB", fileName: "logo-ITB.webp" },
@@ -163,45 +169,74 @@ const Hero = ({ scrollToSection }) => {
               ].map((uni, idx) => (
                 <div
                   key={uni.name}
-                  className="w-16 h-16 flex items-center justify-center overflow-hidden"
+                  className="
+                    w-10 h-10
+                    sm:w-14 sm:h-14
+                    lg:w-14 lg:h-14
+                    flex items-center justify-center
+                    overflow-hidden
+                  "
                   style={{ transitionDelay: `${300 + idx * 50}ms` }}
                 >
                   <img
                     src={`/photo/${uni.fileName}`}
                     alt={`Logo ${uni.name}`}
-                    className="w-10 h-10 object-contain"
+                    className="w-full h-full object-contain"
                     onError={(e) => {
+                      e.currentTarget.src = "";
                       e.currentTarget.style.display = "none";
-                      e.currentTarget.nextSibling.style.display = "block";
                     }}
                   />
-                  <span className="text-[10px] font-bold text-gray-500 hidden">
-                    {uni.name}
-                  </span>
                 </div>
               ))}
             </div>
 
             {/* CTA Buttons */}
             <div
-              className="flex flex-wrap gap-4"
+              className="
+    flex flex-col sm:flex-row  
+    gap-3 sm:gap-4
+  "
               style={{ transitionDelay: "400ms" }}
             >
               <a
                 href="https://wa.me/6281366369621"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-2 bg-[#47D029] text-white px-6 py-3 rounded-full font-semibold hover:scale-105 hover:brightness-110 hover:shadow-lg transition-all duration-300"
+                className="
+                  group flex items-center justify-center gap-2
+                  bg-[#47D029] text-white
+                  px-5 py-3
+                  sm:px-6
+                  rounded-lg sm:rounded-full
+                  font-semibold
+                  text-sm sm:text-base
+                  hover:scale-105 hover:brightness-110 hover:shadow-lg
+                  transition-all duration-300
+                "
               >
-                <WhatsAppIcon className="w-5 h-5" />
+                <WhatsAppIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span>Daftar atau Konsultasi</span>
               </a>
+
               <button
                 onClick={() => scrollToSection("programs")}
-                className="group flex items-center gap-4 border-4 border-brilliant-red text-brilliant-red px-6 py-3 rounded-full font-bold hover:bg-brilliant-red hover:text-white transition-all duration-300 liquid-ripple"
+                className="
+                  group flex items-center justify-center gap-3
+                  border-2 sm:border-4 border-brilliant-red
+                  text-brilliant-red
+                  px-5 py-3
+                  sm:px-6
+                  rounded-lg sm:rounded-full
+                  font-bold
+                  text-sm sm:text-base
+                  hover:bg-brilliant-red hover:text-white
+                  transition-all duration-300
+                  liquid-ripple
+                "
               >
                 <span>Lihat Program</span>
-                <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
           </div>

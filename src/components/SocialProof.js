@@ -50,14 +50,14 @@ const SocialProof = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-3 gap-8 lg:gap-12 relative">
           {/* Stat 1: Alumni */}
-          <div className="text-center text-white group p-6 rounded-2xl transition-all duration-300 hover:scale-105">
-            <div className="flex justify-center items-center gap-3 mb-2">
-              <PersonIcon className="w-10 h-10 lg:w-12 lg:h-12" />
-              <div className="text-4xl lg:text-5xl font-bold">
+          <div className="text-center text-white group p-4 lg:p-6 rounded-2xl transition-all duration-300 hover:scale-105">
+            <div className="flex justify-center items-center gap-2 lg:gap-3 mb-2">
+              <PersonIcon className="w-8 h-8 lg:w-12 lg:h-12" />
+              <div className="text-3xl sm:text-4xl lg:text-5xl font-bold">
                 {alumniCount}+
               </div>
             </div>
-            <div className="text-lg lg:text-xl font-medium opacity-90">
+            <div className="text-base sm:text-lg lg:text-xl font-medium opacity-90">
               Alumni BRILLIANT
             </div>
           </div>
@@ -66,11 +66,11 @@ const SocialProof = () => {
           <div className="hidden md:block absolute left-1/3 top-1/2 -translate-x-1/2 -translate-y-1/2 w-0.5 h-32 bg-white"></div>
 
           {/* Stat 2: Garansi */}
-          <div className="text-center text-white group p-6 rounded-2xl transition-all duration-300 hover:scale-105">
-            <div className="text-xl lg:text-2xl font-bold mb-2">
+          <div className="text-center text-white group p-4 lg:p-6 rounded-2xl transition-all duration-300 hover:scale-105">
+            <div className="text-lg sm:text-xl lg:text-2xl font-bold mb-2">
               Garansi Tahun Depan
             </div>
-            <div className="text-lg lg:text-xl font-medium opacity-90">
+            <div className="text-base sm:text-lg lg:text-xl font-medium opacity-90">
               jika Tidak Lolos
             </div>
           </div>
@@ -79,14 +79,14 @@ const SocialProof = () => {
           <div className="hidden md:block absolute left-2/3 top-1/2 -translate-x-1/2 -translate-y-1/2 w-0.5 h-32 bg-white"></div>
 
           {/* Stat 3: Pengalaman */}
-          <div className="text-center text-white group p-6 rounded-2xl transition-all duration-300 hover:scale-105">
-            <div className="flex justify-center items-center gap-3 mb-2">
-              <CalendarIcon className="w-10 h-10 lg:w-12 lg:h-12" />
-              <div className="text-4xl lg:text-5xl font-bold">
+          <div className="text-center text-white group p-4 lg:p-6 rounded-2xl transition-all duration-300 hover:scale-105">
+            <div className="flex justify-center items-center gap-2 lg:gap-3 mb-2">
+              <CalendarIcon className="w-8 h-8 lg:w-12 lg:h-12" />
+              <div className="text-3xl sm:text-4xl lg:text-5xl font-bold">
                 {yearsCount}+
               </div>
             </div>
-            <div className="text-lg lg:text-xl font-medium opacity-90">
+            <div className="text-base sm:text-lg lg:text-xl font-medium opacity-90">
               Tahun Pengalaman
             </div>
           </div>
