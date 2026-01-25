@@ -11,7 +11,7 @@ const Hero = ({ scrollToSection }) => {
   const [subheadingComplete, setSubheadingComplete] = useState(false);
 
   const fullHeading =
-    "Lulus Tes TKA, SNBT, SKD. Tidak Lulus? Gratis Tahun Depan";
+    "Lulus Tes TKA, SNBT, SKD. Garansi Lulus! Tidak Lulus? Gratis Tahun Depan";
   const fullSubheading =
     "Bimbingan belajar offline & online terbaik. Dibimbing langsung oleh alumni UGM, ITB, & UNDIP dengan metode praktis tanpa ribet.";
 
@@ -116,22 +116,27 @@ const Hero = ({ scrollToSection }) => {
             {/* Main Heading */}
             <h1
               className="
-                text-[1.40rem] text-center lg:text-left
-                sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl
-                font-extrabold leading-tight
-                max-w-[30rem] sm:max-w-none
-                mx-auto lg:mx-0
-                h-[6rem] sm:h-[8rem] md:h-[5rem] lg:h-[9rem]
-                mb-2 lg:mb-4
-                relative
-              "
+                  text-[1.40rem] text-center lg:text-left
+                  sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl
+                  font-extrabold leading-tight
+                  max-w-[30rem] sm:max-w-none
+                  mx-auto lg:mx-0
+                  h-[7.5rem] sm:h-[9rem] md:h-[7rem] lg:h-[10rem] 
+                  mb-2 lg:mb-4
+                  relative
+                "
               style={{ transitionDelay: "0ms" }}
             >
+              {/* 1. Span Invisible: Untuk menjaga layout agar tidak melompat */}
               <span className="invisible" aria-hidden="true">
                 Lulus Tes <span>TKA, SNBT, SKD.</span>
                 <br />
-                Tidak Lulus? Gratis <span>Tahun Depan</span>
+                Garansi Lulus! Tidak Lulus?
+                <br />
+                Gratis <span>Tahun Depan</span>
               </span>
+
+              {/* 2. Span Absolute: Teks yang sedang diketik (displayedHeading) */}
               <span className="absolute inset-0">
                 {displayedHeading.split(" ").map((word, index, arr) => {
                   const highlightWords = [
@@ -142,7 +147,10 @@ const Hero = ({ scrollToSection }) => {
                     "Depan",
                   ];
                   const isHighlight = highlightWords.includes(word);
-                  const isLineBreak = word === "Tidak";
+
+                  // LOGIKA BREAK: Baris baru sebelum kata "Garansi" dan "Gratis"
+                  const isLineBreak = word === "Garansi" || word === "Gratis";
+
                   return (
                     <span key={index}>
                       {isLineBreak && <br />}
@@ -153,27 +161,50 @@ const Hero = ({ scrollToSection }) => {
                     </span>
                   );
                 })}
+
+                {/* Kursor Pengetikan */}
                 <span
-                  className={`inline-block w-0.5 h-6 sm:h-8 lg:h-10 bg-brilliant-red ml-1 align-middle ${headingComplete ? "opacity-0" : "animate-pulse"}`}
+                  className={`inline-block w-0.5 h-6 sm:h-8 lg:h-10 bg-brilliant-red ml-1 align-middle ${
+                    headingComplete ? "opacity-0" : "animate-pulse"
+                  }`}
                 ></span>
               </span>
             </h1>
 
             {/* Subheading */}
             <p
-              className="text-gray-700 text-center lg:text-left text-[0.80rem] lg:text-[1rem] max-w-xl font-medium h-[4.5rem] lg:h-[4rem] relative"
+              className="text-gray-700 text-center lg:text-left text-[0.80rem] lg:text-[1rem] max-w-xl font-medium h-[5rem] lg:h-[4.5rem] relative"
               style={{ transitionDelay: "200ms" }}
             >
+              {/* 1. Tambahkan ini kembali sebagai "cetakan" layout */}
               <span className="invisible" aria-hidden="true">
-                Bimbingan belajar offline & online berkualitas tinggi, dibimbing
-                langsung oleh alumni UGM, ITB, & UNDIP. Metode belajar praktis,
-                jelas, dan efisien untuk hasil maksimal tanpa proses yang rumit.
+                Bimbingan belajar <strong>offline & online</strong> berkualitas
+                tinggi, dibimbing langsung oleh alumni UGM, ITB, & UNDIP. Metode
+                belajar praktis, jelas, dan efisien untuk hasil maksimal tanpa
+                proses yang rumit.
               </span>
+
+              {/* 2. Teks yang sedang diketik */}
               <span className="absolute inset-0">
-                {displayedSubheading}
+                {displayedSubheading
+                  .split(/(offline & online)/gi)
+                  .map((part, index) =>
+                    part.toLowerCase() === "offline & online" ? (
+                      <strong
+                        key={index}
+                        className="font-bold text-[#FF0000]"
+                      >
+                        {part}
+                      </strong>
+                    ) : (
+                      part
+                    ),
+                  )}
                 {headingComplete && (
                   <span
-                    className={`inline-block w-0.5 h-4 lg:h-5 bg-gray-500 ml-1 align-middle ${subheadingComplete ? "opacity-0" : "animate-pulse"}`}
+                    className={`inline-block w-0.5 h-4 lg:h-5 bg-gray-500 ml-1 align-middle ${
+                      subheadingComplete ? "opacity-0" : "animate-pulse"
+                    }`}
                   ></span>
                 )}
               </span>

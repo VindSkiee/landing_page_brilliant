@@ -37,8 +37,8 @@ const Mission = () => {
             <p className="text-gray-700 text-base sm:text-lg lg:text-xl leading-relaxed">
               Kami percaya tidak hanya pada pertumbuhan yang lebih besar, tetapi
               juga pertumbuhan yang lebih baik. Dan pertumbuhan yang lebih baik
-              berarti menyelaraskan kesuksesan bisnis Anda dengan kesuksesan
-              siswa Anda. Win-win!
+              berarti menyelaraskan kesuksesan bisnis kami dengan kesuksesan
+              anda. Win-win!
             </p>
           </div>
         </div>

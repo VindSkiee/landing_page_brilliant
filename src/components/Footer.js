@@ -97,13 +97,24 @@ const Footer = () => {
               Lokasi
             </h3>
             <div className="flex items-start gap-3 text-white/80">
-              <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                <MapPin className="w-5 h-5" />
+              {/* Tambahkan class 'group' pada pembungkus utama */}
+              <div className="group flex items-start gap-4 cursor-pointer">
+                {/* Icon MapPin dengan efek hover yang Anda minta */}
+                <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1 transition-all group-hover:bg-brilliant-yellow group-hover:text-brilliant-purple">
+                  <MapPin className="w-5 h-5" />
+                </div>
+
+                {/* Alamat yang bisa diklik */}
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Jl.+Eka+Jaya+RT+20+Kel.+Talang+Bakung+Kec.Paal+Merah+Kota+Jambi"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="leading-relaxed text-white/80 hover:text-white transition-colors"
+                >
+                  Jl. Eka Jaya RT 20, Kel. Talang Bakung Kec.Paal Merah, Kota
+                  Jambi
+                </a>
               </div>
-              <p className="leading-relaxed">
-                Jl. Eka Jaya RT 20, Kel. Talang Bakung Kec.Paal Merah, Kota
-                Jambi
-              </p>
             </div>
           </div>
         </div>
