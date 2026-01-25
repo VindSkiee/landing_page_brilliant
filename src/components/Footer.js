@@ -23,7 +23,7 @@ const Footer = () => {
             </div>
             <p className="text-white/80 text-sm mb-6 leading-relaxed">
               Bimbingan belajar offline & online terpercaya untuk persiapan PTN,
-              CPNS, Kedinasan, dan Polri. Didirikan sejak tahun 2018.
+              CPNS, Kedinasan, dan Polri. Didirikan sejak 10 Maret 2015.
             </p>
             {/* Social Media */}
             <div>

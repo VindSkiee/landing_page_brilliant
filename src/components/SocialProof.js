@@ -14,7 +14,7 @@ const SocialProof = () => {
           if (entry.isIntersecting && !countersAnimated) {
             setCountersAnimated(true);
             animateCounter(0, 1000, 2000, setAlumniCount);
-            animateCounter(0, 5, 2000, setYearsCount);
+            animateCounter(0, 10, 2000, setYearsCount);
           }
         });
       },

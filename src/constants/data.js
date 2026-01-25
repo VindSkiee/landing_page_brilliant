@@ -5,7 +5,7 @@ export const programs = [
     title: "Program bimbel TKA",
     subtitle: "SD, SMP & SMA",
     description:
-      "Berbagai macam pilihan program bimbel yang dapat dipilih sesuai kebutuhanmu",
+      "Bimbingan belajar untuk TKA SD, SMP, dan SMA dengan materi terstruktur, latihan rutin, dan pendampingan intensif agar siap menghadapi ujian sekolah.",
     image: "tka.webp",
   },
   {
@@ -13,7 +13,7 @@ export const programs = [
     title: "Program bimbel",
     subtitle: "SNBT & UM PTN",
     description:
-      "Berbagai macam pilihan program bimbel yang dapat dipilih sesuai kebutuhanmu",
+      "Program persiapan masuk PTN favorit dengan fokus latihan soal SNBT dan UM, strategi pengerjaan, serta pembahasan mendalam bersama mentor berpengalaman.",
     image: "snbt.webp",
   },
   {
@@ -21,7 +21,7 @@ export const programs = [
     title: "Program bimbel",
     subtitle: "Tes CPNS & CPPPK",
     description:
-      "Berbagai macam pilihan program bimbel yang dapat dipilih sesuai kebutuhanmu",
+      "Persiapan tes CPNS dan PPPK mulai dari TWK, TIU, hingga TKP dengan simulasi CAT dan pembahasan soal yang sesuai standar terbaru.",
     image: "cpns.webp",
   },
   {
@@ -29,7 +29,7 @@ export const programs = [
     title: "Program bimbel",
     subtitle: "Tes Polisi & TNI",
     description:
-      "Berbagai macam pilihan program bimbel yang dapat dipilih sesuai kebutuhanmu",
+      "Program khusus persiapan seleksi Polisi dan TNI meliputi akademik, psikotes, dan pembinaan mental agar lebih siap dan percaya diri saat tes.",
     image: "polisi_tni.webp",
   },
   {
@@ -37,18 +37,19 @@ export const programs = [
     title: "Program bimbel",
     subtitle: "Tes Kedinasan",
     description:
-      "Berbagai macam pilihan program bimbel yang dapat dipilih sesuai kebutuhanmu",
-    image: "kedinasan.webp",
+      "Bimbingan intensif untuk tes sekolah kedinasan dengan materi terarah, latihan soal berkala, dan strategi lolos seleksi tahap demi tahap.",
+    image: "Kedinasan.webp",
   },
   {
     id: 6,
     title: "Program bimbel",
     subtitle: "Tes BUMN & BUMS",
     description:
-      "Berbagai macam pilihan program bimbel yang dapat dipilih sesuai kebutuhanmu",
+      "Persiapan tes rekrutmen BUMN dan BUMS dengan fokus kemampuan dasar, psikotes, dan simulasi soal sesuai kebutuhan dunia kerja.",
     image: "bumn.webp",
   },
 ];
+
 
 // Data untuk Testimonials
 export const testimonials = [
@@ -78,7 +79,7 @@ export const testimonials = [
   },
   {
     id: 4,
-    name: "Hafizh Syahputra",
+    name: "Muhammad Hafidz",
     university: "Lulus CPNS Dosen",
     image: "/photo/testimonial/Hafizh.webp",
     quote:

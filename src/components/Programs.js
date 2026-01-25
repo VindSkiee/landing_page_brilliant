@@ -56,7 +56,7 @@ const Programs = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-8 lg:mb-16">
-          <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold leading-[1.15] mb-3 lg:mb-4">
+          <h2 className="text-2xl sm:text-3xl lg:text-5xl font-black leading-[1.15] mb-3 lg:mb-4">
             <span className="bg-gradient-to-r from-[#FF0000] to-[#FF7400] bg-clip-text text-transparent">
               Program Bimbel{" "}
             </span>
@@ -66,18 +66,18 @@ const Programs = () => {
               yang Tersedia
             </span>
           </h2>
-          <p className="text-gray-600 text-base lg:text-lg max-w-2xl mx-auto">
+          <p className="text-gray-600 text-[0.9rem] lg:text-lg max-w-2xl mx-auto">
             Berbagai macam pilihan program bimbel yang dapat dipilih sesuai
             kebutuhanmu!
           </p>
         </div>
 
         {/* Programs Grid */}
-        <div className="flex flex-wrap justify-center gap-4 sm:gap-6 lg:gap-9 py-12 lg:py-24">
+        <div className="flex flex-wrap justify-center gap-10 sm:gap-6 lg:gap-9 py-12 lg:py-24">
           {programs.map((program, index) => (
             <div
               key={program.id}
-              className="group relative w-full max-w-[340px] sm:max-w-[360px] lg:w-[380px] min-h-[440px] sm:min-h-[460px] bg-white flex flex-col overflow-visible
+              className="group relative w-full max-w-[320px] sm:max-w-[360px] lg:w-[380px] min-h-[440px] sm:min-h-[460px] bg-white flex flex-col overflow-visible
                  shadow-xl hover:shadow-2xl transition-all duration-500
                  hover:z-10 glowing-outline-yellow"
               style={{
@@ -101,7 +101,7 @@ const Programs = () => {
                 <img
                   src={`/photo/${program.image}`}
                   alt={program.title}
-                  className="w-full h-[205px] object-cover translate-x-[-3px]
+                  className="w-[330px] h-[205px] object-cover translate-x-[-3px]
                      transition-transform duration-500 ease-out
                      group-hover:scale-[1.15]"
                 />
@@ -125,7 +125,7 @@ const Programs = () => {
                     </h4>
                   </div>
 
-                  <p className="text-gray-600 text-base leading-relaxed text-center">
+                  <p className="text-gray-600 text-[0.9rem] leading-relaxed text-center">
                     {program.description}
                   </p>
                 </div>
