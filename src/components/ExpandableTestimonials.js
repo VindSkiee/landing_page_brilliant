@@ -181,15 +181,15 @@ const ExpandableTestimonials = () => {
   );
 };
 
-// Testimonial Card Component
 const TestimonialCard = ({ testimonial }) => {
   return (
     <div
       className="
         group relative overflow-hidden
-        bg-white rounded-2xl p-4 flex flex-col py-10 mb-5
-        transition-all duration-700 ease-out mt-10
-         hover:border-orange-500 hover:translate-y-[-10px] hover:shadow-2xl
+        bg-white rounded-2xl p-4 flex flex-col py-10
+        transition-all duration-700 ease-out
+        hover:border-orange-500 hover:-translate-y-2 hover:shadow-2xl
+        h-full
       "
       style={{
         minHeight: "260px",
@@ -204,17 +204,17 @@ const TestimonialCard = ({ testimonial }) => {
           bg-orange-500
           scale-0 opacity-0
           transition-all duration-700 ease-out
-          group-hover:scale-100 group-hover:opacity-100
+          group-hover:scale-125 group-hover:opacity-100
         "
-        style={{ borderRadius: "16px" }}
+        style={{ borderRadius: "16px", transformOrigin: "center" }}
       />
 
       {/* CONTENT (HARUS DI ATAS OVERLAY) */}
-      <div className="relative z-10 flex flex-col">
+      <div className="relative z-10 flex flex-col h-full items-center">
         {/* Image */}
         <div
           className="
-            w-full rounded-xl overflow-hidden flex-shrink-0 mb-3
+            w-full rounded-xl overflow-hidden flex-shrink-0 mb-4
             bg-gradient-to-br from-gray-100 to-gray-200
             transition-all duration-700 ease-out
             group-hover:shadow-lg
@@ -238,29 +238,25 @@ const TestimonialCard = ({ testimonial }) => {
         {/* Name */}
         <h4
           className="
-            font-semibold mb-1 text-center
+            font-bold mb-1 text-center mt-auto
             transition-colors duration-700
-            group-hover:text-white
+            text-gray-900 group-hover:text-white
           "
-          style={{ fontSize: "14px", lineHeight: "1.4" }}
+          style={{ fontSize: "16px", lineHeight: "1.4" }}
         >
           {testimonial.name}
         </h4>
 
-        {/* Acceptance */}
+        {/* University / Lulusan (Updated Key) */}
         <p
           className="
-            text-center text-sm
+            text-center text-sm font-medium
             transition-colors duration-700
-            group-hover:text-orange-100
+            text-gray-500 group-hover:text-orange-100
           "
           style={{
-            fontSize: "12px",
+            fontSize: "13px",
             lineHeight: "1.5",
-            display: "-webkit-box",
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: "vertical",
-            overflow: "hidden",
           }}
         >
           {testimonial.acceptance}
@@ -271,3 +267,4 @@ const TestimonialCard = ({ testimonial }) => {
 };
 
 export default ExpandableTestimonials;
+

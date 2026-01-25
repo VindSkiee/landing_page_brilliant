@@ -197,21 +197,45 @@ const Testimonials = () => {
                         >
                           <div className="relative">
                             {/* University Badge */}
+                            {/* University Badge - Auto Height Version */}
                             <div
-                              className="absolute left-1/2 -translate-x-1/2 bg-white text-white
-             flex items-center justify-center z-10 shadow-lg mt-8 sm:mt-10
-             transition-all duration-700 ease-out
-             group-hover:shadow-2xl"
+                              className="absolute left-1/2 -translate-x-1/2 
+  bg-gradient-to-b from-white to-gray-50 border border-gray-100
+  flex items-center justify-center z-10 
+  shadow-[0_8px_30px_rgb(0,0,0,0.12)] 
+  mt-8 sm:mt-10
+  transition-all duration-500 ease-out
+  group-hover:shadow-[0_20px_35px_rgba(0,0,0,0.15)]
+  group-hover:border-orange-100 group-hover:-translate-y-1 group-hover:scale-105"
                               style={{
                                 width: "260px",
-                                height: "60px",
-                                borderRadius: "14px",
+                                minHeight: "60px", // Ganti height jadi minHeight
+                                height: "auto", // Biarkan tinggi otomatis
+                                borderRadius: "20px",
                                 top: "-30px",
                               }}
                             >
-                              <p className="font-bold text-xs sm:text-sm px-3 sm:px-4 text-center truncate">
-                                {testimonial.university}
-                              </p>
+                              {/* Tambahkan py-2 agar teks tidak nempel pinggir saat 2 baris */}
+                              <div className="flex items-center gap-2.5 px-3 sm:px-4 py-2 w-full justify-center">
+                                {/* Icon Tetap Sama */}
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 24 24"
+                                  fill="currentColor"
+                                  className="w-5 h-5 flex-shrink-0 text-orange-500 drop-shadow-sm transition-colors duration-300 group-hover:text-orange-600"
+                                >
+                                  <path d="M11.7 2.805a.75.75 0 0 1 .6 0A60.65 60.65 0 0 1 22.83 8.72a.75.75 0 0 1-.231 1.337 49.949 49.949 0 0 0-9.902 3.912l-.003.002-.34.18a.75.75 0 0 1-.707 0A50.009 50.009 0 0 0 7.5 12.174v-.224c0-.131.067-.248.182-.311a48.654 48.654 0 0 1 4.018-2.092c.57-.255 1.12-.52 1.667-.788.075-.037.075-.146 0-.183a67.87 67.87 0 0 0-2.029-1.011 64.903 64.903 0 0 0-4.634-2.144c-.722-.303-1.428-.62-2.122-.953a.75.75 0 0 1-.295-1.013c.198-.328.406-.653.626-.976l.046-.07c.075-.115.174-.189.31-.223a.75.75 0 0 1 .387.037c.548.2 1.107.41 1.674.633.376.15.757.298 1.139.444.606.233 1.218.461 1.836.684.348.125.698.25 1.05.372ZM9 15.75a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 .75.75v.233c0 1.296-.77 2.446-1.928 2.887a4.673 4.673 0 0 1-2.144 0 3.08 3.08 0 0 1-1.928-2.887V15.75Z" />
+                                </svg>
+
+                                {/* Hapus 'truncate', ganti dengan text-wrap & leading-tight */}
+                                <p
+                                  className="font-bold text-xs sm:text-sm text-center text-gray-800 tracking-wide 
+                                  group-hover:text-black transition-colors duration-300
+                                  leading-tight line-clamp-2"
+                                >
+                                  {testimonial.university}
+                                </p>
+                              </div>
                             </div>
 
                             {/* Main Card */}
@@ -239,7 +263,7 @@ const Testimonials = () => {
                                 }}
                               >
                                 <img
-                                  src="/photo/default-avatar.jpg"
+                                  src={testimonial.image}
                                   alt={testimonial.name}
                                   className="w-full h-full object-cover"
                                   onError={(e) => {

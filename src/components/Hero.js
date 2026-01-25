@@ -107,7 +107,7 @@ const Hero = ({ scrollToSection }) => {
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-8 items-center">
           {/* Left Content */}
           <div
-            className={`lg:w-[100%] space-y-6 lg:space-y-4 transition-all duration-800 pt-28 sm:pt-32 lg:pt-36 ${
+            className={`lg:w-[100%] space-y-6 lg:space-y-4 transition-all duration-800 pt-28 sm:pt-32 lg:pt-36 relative z-20 ${
               heroAnimated
                 ? "opacity-100 translate-x-0"
                 : "opacity-0 -translate-x-24"
@@ -161,7 +161,7 @@ const Hero = ({ scrollToSection }) => {
 
             {/* Subheading */}
             <p
-              className="text-gray-700 text-center lg:text-left text-[0.80rem] lg:text-1xl max-w-xl font-medium h-[4.5rem] lg:h-[4rem] relative"
+              className="text-gray-700 text-center lg:text-left text-[0.80rem] lg:text-[1rem] max-w-xl font-medium h-[4.5rem] lg:h-[4rem] relative"
               style={{ transitionDelay: "200ms" }}
             >
               <span className="invisible" aria-hidden="true">
