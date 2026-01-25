@@ -1,5 +1,4 @@
 import React from "react";
-import { Image as ImageIcon } from "lucide-react";
 import { programs } from "../constants/data";
 
 const Programs = () => {
