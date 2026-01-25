@@ -72,7 +72,7 @@ export const testimonials = [
     id: 3,
     name: "Kenzie Muhammad Rizieq",
     university: "Lulus SNBT ke Universitas Diponegoro",
-    image: "/photo/testimonial/kenzie.webp",
+    image: "/photo/testimonial/Kenzie.webp",
     quote:
       "Program garansi tahun depan membuat saya lebih tenang dalam belajar. Alhamdulillah lolos di percobaan pertama!",
   },
