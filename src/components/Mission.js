@@ -32,8 +32,8 @@ const Mission = () => {
 
           {/* Right Content */}
           <div className="space-y-4 lg:space-y-6 order-1 lg:order-2">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight">
-              Our Mission: Helping Millions of Organizations Grow Better
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 leading-tight" style={{ fontWeight: 900 }}>
+              <span className="text-brilliant-red">Misi Kami</span>: Membantu Jutaan Siswa Tumbuh Lebih Baik
             </h2>
             <p className="text-gray-700 text-base sm:text-lg lg:text-xl leading-relaxed">
               Kami percaya tidak hanya pada pertumbuhan yang lebih besar, tetapi

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 // Import Components
 import Navbar from "./components/Navbar";
@@ -18,7 +18,22 @@ import Footer from "./components/Footer";
 // ============================================
 
 const App = () => {
-  // Smooth scroll function
+  useEffect(() => {
+    // Cek jika sedang di mode development (Vite menggunakan import.meta.env.DEV)
+    const isDev = import.meta.env.DEV; 
+
+    if (isDev) {
+      const script = document.createElement('script');
+      script.src = "//cdn.jsdelivr.net/npm/eruda";
+      document.body.appendChild(script);
+      script.onload = () => {
+        if (window.eruda) {
+          window.eruda.init();
+        }
+      };
+    }
+  }, []); // Berjalan sekali saat app di-load
+
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     element?.scrollIntoView({ behavior: "smooth", block: "start" });

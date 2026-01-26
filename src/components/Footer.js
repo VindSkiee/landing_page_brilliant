@@ -23,8 +23,23 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-white/80 text-sm mb-6 leading-relaxed">
-              Bimbingan belajar offline & online terpercaya untuk persiapan PTN,
-              CPNS, Kedinasan, dan Polri. Didirikan sejak 10 Maret 2015.
+              Bimbingan belajar offline & online yang didirikan sejak 10 Maret
+              2015. terpercaya untuk:
+              <ul className="text-white/90 text-sm mb-6 leading-relaxed space-y-2">
+                {[
+                  "Tes TKA SD / SMP / SMA",
+                  "Tes SNBT / UM PTN",
+                  "Tes Kedinasan",
+                  "Tes Polisi / TNI",
+                  "Tes CPNS / CPPPK",
+                  "Tes BUMN / BUMS",
+                ].map((item, i) => (
+                  <li key={i} className="flex gap-2">
+                    <span className="text-[#00c8ff]">-</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
             </p>
             {/* Social Media */}
             <div>

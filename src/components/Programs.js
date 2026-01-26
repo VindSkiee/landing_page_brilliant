@@ -93,9 +93,19 @@ const Programs = () => {
           {programs.map((program, index) => (
             <div
               key={program.id}
-              className="group relative w-full max-w-[320px] sm:max-w-[360px] lg:w-[380px] min-h-[440px] sm:min-h-[460px] bg-white flex flex-col overflow-visible
-                 shadow-xl hover:shadow-2xl transition-all duration-500
-                 hover:z-10 glowing-outline-yellow"
+              className="
+                  group relative w-full max-w-[320px] sm:max-w-[360px] lg:w-[380px]
+                  min-h-[440px] sm:min-h-[460px]
+                  bg-white flex flex-col overflow-visible
+                  shadow-xl
+                  transition-all duration-500
+                  glowing-outline-yellow
+                  will-change-transform transform-gpu
+
+                  /* Desktop only */
+                  xl:hover:shadow-2xl
+                  xl:hover:z-10
+                "
               style={{
                 animationDelay: `${index * 100}ms`,
                 borderRadius: "42px",
@@ -103,7 +113,7 @@ const Programs = () => {
             >
               {/* Image Container */}
               <div
-                className="relative min-h-[200px] group-hover:min-h-[220px]
+                className="relative min-h-[200px] lg:group-hover:min-h-[220px]
                    overflow-visible flex-shrink-0
                    transition-[min-height] duration-500
                    ease-[cubic-bezier(0.34,1.56,0.64,1)]"
@@ -117,9 +127,13 @@ const Programs = () => {
                 <img
                   src={`/photo/${program.image}`}
                   alt={program.title}
-                  className="w-[330px] h-[205px] object-cover translate-x-[-3px]
-                     transition-transform duration-500 ease-out
-                     group-hover:scale-[1.15]"
+                  className="
+                      w-[330px] h-[205px] object-cover
+                      translate-x-[10px]
+                      transition-transform duration-300 ease-out
+                      lg:group-hover:scale-[1.15]
+                      transform-gpu
+                    "
                   loading="lazy"
                 />
               </div>
@@ -129,14 +143,16 @@ const Programs = () => {
                 <div>
                   <div className="mb-5 flex flex-col items-center text-center">
                     <h3
-                      className="text-xl font-extrabold text-gray-900
-                           group-hover:text-brilliant-purple group-hover:font-black transition-colors leading-tight"
+                      className="text-xl font-black text-brilliant-purple
+                           transition-colors leading-tight"
+                      style={{ fontWeight: 900 }}
                     >
                       {program.title}
                     </h3>
                     <h4
-                      className="text-xl font-extrabold text-gray-900
-                           group-hover:text-brilliant-red transition-colors leading-tight"
+                      className="text-xl font-black text-brilliant-red
+                           transition-colors leading-tight"
+                      style={{ fontWeight: 900 }}
                     >
                       {program.subtitle}
                     </h4>

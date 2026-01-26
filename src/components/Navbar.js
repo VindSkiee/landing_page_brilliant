@@ -111,7 +111,7 @@ const Navbar = ({ scrollToSection }) => {
               <div className="block">
                 <div
                   className={`
-                    font-extrabold
+                    font-extrabold text-center
                     text-xs sm:text-sm lg:text-base
                     leading-tight
                     transition-colors duration-500
@@ -212,7 +212,7 @@ const Navbar = ({ scrollToSection }) => {
         {/* Mobile Menu */}
         <div
           className={`lg:hidden overflow-hidden transition-all duration-300 ${
-            isMobileMenuOpen ? "max-h-64" : "max-h-0"
+            isMobileMenuOpen ? "max-h-[420px]" : "max-h-0"
           }`}
         >
           <div className="px-6 pb-4 pt-2 flex flex-col gap-3 border-t border-white/10">
@@ -229,6 +229,7 @@ const Navbar = ({ scrollToSection }) => {
             >
               Produk Kami
             </button>
+
             <button
               onClick={() => {
                 scrollToSection("testimonials");
@@ -242,6 +243,7 @@ const Navbar = ({ scrollToSection }) => {
             >
               Testimoni
             </button>
+
             <button
               onClick={() => {
                 scrollToSection("aboutus");
@@ -255,6 +257,29 @@ const Navbar = ({ scrollToSection }) => {
             >
               Tentang Kami
             </button>
+
+            {/* 🔥 BUTTON CHAT WA (MOBILE ONLY) */}
+            <a
+              href="https://wa.me/6281366369621"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="
+                mt-2
+                flex items-center justify-center gap-2
+                bg-gradient-to-r from-[#47D029] to-[#2FA91D]
+                text-white
+                px-5 py-3
+                rounded-full
+                font-semibold text-sm
+                hover:brightness-110 active:scale-95
+                transition-all duration-300
+                shadow-lg
+              "
+            >
+              <WhatsAppIcon className="w-4 h-4" />
+              <span>Chat WA</span>
+            </a>
           </div>
         </div>
       </div>

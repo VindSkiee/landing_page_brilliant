@@ -21,7 +21,7 @@ const AboutUs = () => {
           </div>
 
           {/* Heading */}
-          <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-brilliant-purple mb-3 lg:mb-4">
+          <h2 className="text-2xl sm:text-3xl lg:text-5xl font-black text-brilliant-purple mb-3 lg:mb-4" style={{ fontWeight: 900 }}>
             BRILLIANT INDONESIA
           </h2>
           <p className="text-xl sm:text-2xl lg:text-3xl font-semibold text-white">
@@ -32,12 +32,12 @@ const AboutUs = () => {
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Left Content */}
           <div className="space-y-4 lg:space-y-6">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight">
-              About Us
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-brilliant-purple leading-tight" style={{ fontWeight: 900 }}>
+              Tentang Kami
             </h2>
             <p className="text-gray-700 text-base sm:text-lg lg:text-xl leading-relaxed">
               Brilliant Indonesia adalah lembaga bimbingan belajar yang
-              dirancang dengan teliti, bukan asal-asalan, untuk memberikan
+              dirancang dengan teliti, untuk memberikan
               pengalaman belajar yang menyenangkan dan efektif. Kami berkomitmen
               membantu siswa meraih impian mereka dengan metode yang terbukti
               berhasil.

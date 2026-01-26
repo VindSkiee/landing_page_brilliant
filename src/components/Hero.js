@@ -10,8 +10,7 @@ const Hero = ({ scrollToSection }) => {
   const [headingComplete, setHeadingComplete] = useState(false);
   const [subheadingComplete, setSubheadingComplete] = useState(false);
 
-  const fullHeading =
-    "Lulus Tes TKA, SNBT, SKD. Garansi Lulus! Tidak Lulus? Gratis Tahun Depan";
+  const fullHeading = "Lulus Tes TKA, SNBT, SKD.|Garansi Lulus! Tidak Lulus?|Gratis Tahun Depan";
   const fullSubheading =
     "Bimbingan belajar offline & online terbaik. Dibimbing langsung oleh alumni UGM, ITB, & UNDIP dengan metode praktis tanpa ribet.";
 
@@ -121,64 +120,77 @@ const Hero = ({ scrollToSection }) => {
                   md:text-3xl 
                   lg:text-4xl 
                   xl:text-5xl
-                  font-extrabold leading-tight
+                  font-black leading-tight
                   max-w-[30rem] sm:max-w-none
                   mx-auto lg:mx-0
                   h-[7.5rem] sm:h-[9rem] md:h-[7rem] lg:h-[10rem] 
                   mb-2 lg:mb-4
-                  relative
+                  relative antialiased
                 "
-              style={{ transitionDelay: "0ms" }}
+              style={{ transitionDelay: "0ms", fontWeight: 900 }}
             >
               {/* 1. Span Invisible: Untuk menjaga layout agar tidak melompat */}
               <span className="invisible" aria-hidden="true">
-                Lulus Tes <span>TKA, SNBT, SKD.</span>
+                Lulus Tes <span className="text-brilliant-red">TKA, SNBT, SKD.</span>
                 <br />
                 Garansi Lulus! Tidak Lulus?
                 <br />
-                Gratis <span>Tahun Depan</span>
+                Gratis <span className="text-brilliant-red">Tahun Depan</span>
               </span>
 
-              {/* 2. Span Absolute: Teks yang sedang diketik (displayedHeading) */}
-              <span className="absolute inset-0">
-                {displayedHeading.split(" ").map((word, index, arr) => {
-                  const highlightWords = [
-                    "TKA,",
-                    "SNBT,",
-                    "SKD.",
-                    "Tahun",
-                    "Depan",
-                  ];
-                  const isHighlight = highlightWords.includes(word);
-
-                  // LOGIKA BREAK: Baris baru sebelum kata "Garansi" dan "Gratis"
-                  const isLineBreak = word === "Garansi" || word === "Gratis";
-
-                  return (
-                    <span key={index}>
-                      {isLineBreak && <br />}
-                      <span
-                        // PERUBAHAN DISINI:
-                        // 1. Tambahkan transition-colors dan duration-700 (700ms)
-                        // 2. Cek apakah `subheadingComplete` sudah true.
-                        //    Jika true & kata highlight -> warna merah.
-                        //    Jika false -> warna teks default (misal text-gray-900 atau inherit)
-                        className={`transition-colors duration-700 ease-in-out ${
-                          isHighlight && subheadingComplete
-                            ? "text-brilliant-red"
-                            : "text-gray-900" // Ganti dengan warna default teks heading Anda (hitam/abu tua)
-                        }`}
-                      >
-                        {word}
-                      </span>
-                      {index < arr.length - 1 ? " " : ""}
-                    </span>
-                  );
-                })}
+              {/* 2. Span Absolute: Teks yang sedang diketik */}
+              <span className="absolute inset-0 whitespace-pre-wrap">
+                {(() => {
+                  const lines = fullHeading.split("|");
+                  const highlightWords = ["TKA,", "SNBT,", "SKD.", "Tahun", "Depan"];
+                  let charCount = 0;
+                  
+                  return lines.map((line, lineIndex) => {
+                    const lineStart = charCount;
+                    const lineEnd = charCount + line.length;
+                    charCount = lineEnd + 1; // +1 for the | delimiter
+                    
+                    if (displayedHeading.length <= lineStart) return null;
+                    
+                    const words = line.split(" ");
+                    let wordCharCount = lineStart;
+                    
+                    return (
+                      <React.Fragment key={lineIndex}>
+                        {lineIndex > 0 && <br />}
+                        {words.map((word, wordIndex) => {
+                          const wordStart = wordCharCount;
+                          const wordEnd = wordCharCount + word.length;
+                          wordCharCount = wordEnd + 1; // +1 for space
+                          
+                          if (displayedHeading.length <= wordStart) return null;
+                          
+                          const visibleWord = displayedHeading.slice(wordStart, Math.min(displayedHeading.length, wordEnd));
+                          const isHighlight = highlightWords.includes(word);
+                          
+                          return (
+                            <span key={`${lineIndex}-${wordIndex}`}>
+                              <span
+                                className={`transition-colors duration-500 ease-in-out ${
+                                  isHighlight && subheadingComplete
+                                    ? "text-brilliant-red"
+                                    : "text-gray-900"
+                                }`}
+                              >
+                                {visibleWord}
+                              </span>
+                              {wordIndex < words.length - 1 && visibleWord === word ? " " : ""}
+                            </span>
+                          );
+                        })}
+                      </React.Fragment>
+                    );
+                  });
+                })()}
 
                 {/* Kursor Pengetikan */}
                 <span
-                  className={`inline-block w-0.5 h-6 sm:h-8 lg:h-10 bg-brilliant-red ml-1 align-middle ${
+                  className={`inline-block w-0.5 h-6 sm:h-8 lg:h-10 bg-brilliant-red ml-1 align-middle transition-opacity duration-300 ${
                     headingComplete ? "opacity-0" : "animate-pulse"
                   }`}
                 ></span>
@@ -190,48 +202,39 @@ const Hero = ({ scrollToSection }) => {
               className="text-gray-700 text-center lg:text-left text-[0.80rem] lg:text-[1rem] max-w-xl font-medium h-[5rem] lg:h-[4.5rem] relative"
               style={{ transitionDelay: "200ms" }}
             >
-              {/* 1. Tambahkan ini kembali sebagai "cetakan" layout */}
+              {/* 1. Span Invisible untuk menjaga layout */}
               <span className="invisible" aria-hidden="true">
-                Bimbingan belajar <strong>offline & online</strong> berkualitas
-                tinggi, dibimbing langsung oleh alumni UGM, ITB, & UNDIP. Metode
-                belajar praktis, jelas, dan efisien untuk hasil maksimal tanpa
-                proses yang rumit.
+                Bimbingan belajar <strong>offline & online</strong> terbaik. Dibimbing langsung oleh alumni UGM, ITB, & UNDIP dengan metode praktis tanpa ribet.
               </span>
 
               {/* 2. Teks yang sedang diketik */}
               <span className="absolute inset-0">
-                {displayedSubheading
-                  .split(/(offline & online)/gi)
-                  .map((part, index) =>
-                    part.toLowerCase() === "offline & online" ? (
-                      <strong
-                        key={index}
-                        // TRIK CSS:
-                        // 1. Kita gunakan inline style untuk 'text-shadow'.
-                        // 2. Jika complete, kita beri shadow tipis (0.8px) dengan warna teks saat ini (currentColor).
-                        // 3. Shadow ini akan mengisi celah antar huruf, membuatnya terlihat lebih tebal secara visual.
-                        style={{
-                          textShadow: subheadingComplete
-                            ? "0 0 0.8px currentColor" // Efek tebal aktif (sesuaikan 0.8px jika terlalu tebal/tipis)
-                            : "0 0 0 transparent", // Efek tebal non-aktif
-                        }}
-                        className={`font-medium transition-all duration-1000 ease-in-out ${
-                          subheadingComplete
-                            ? "text-[#FF0000]" // Warna akhir (Merah)
-                            : "text-gray-700" // Warna awal (Abu)
-                        }`}
-                      >
-                        {part}
-                      </strong>
-                    ) : (
-                      part
-                    ),
-                  )}
+                {displayedSubheading.split(/(offline & online)/gi).map((part, index) =>
+                  part.toLowerCase() === "offline & online" ? (
+                    <strong
+                      key={index}
+                      style={{
+                        textShadow: subheadingComplete
+                          ? "0 0 0.8px currentColor"
+                          : "0 0 0 transparent",
+                      }}
+                      className={`font-semibold transition-all duration-700 ease-in-out ${
+                        subheadingComplete
+                          ? "text-[#FF0000]"
+                          : "text-gray-700"
+                      }`}
+                    >
+                      {part}
+                    </strong>
+                  ) : (
+                    <span key={index}>{part}</span>
+                  )
+                )}
 
                 {/* Kursor Subheading */}
                 {headingComplete && (
                   <span
-                    className={`inline-block w-0.5 h-4 lg:h-5 bg-gray-500 ml-1 align-middle ${
+                    className={`inline-block w-0.5 h-4 lg:h-5 bg-gray-500 ml-1 align-middle transition-opacity duration-300 ${
                       subheadingComplete ? "opacity-0" : "animate-pulse"
                     }`}
                   ></span>
@@ -339,13 +342,13 @@ const Hero = ({ scrollToSection }) => {
             }`}
             style={{ transitionDelay: "200ms" }}
           >
-            <div className="relative z-10 w-full h-[36rem] lg:h-[40rem] pb-8">
+            <div className="relative z-10 w-full h-[40rem] lg:h-[40rem] pb-8">
               {/* SVG Blob Background */}
               <div className="absolute 
               lg:-right-48 
               xl:-right-48 
               lg:top-28 
-              top-[-18%] right-[-40rem] z-0">
+              top-[-18%] right-[-30rem] z-0">
                 <img
                   src={BlobShape}
                   alt=""
@@ -369,7 +372,7 @@ const Hero = ({ scrollToSection }) => {
                     left-[-5rem]
                     -translate-x-1/2
                     w-64
-                    h-[26rem]
+                    h-[28rem]
 
                     /* SMALL (sm) */
                     sm:left-[-3rem]
@@ -384,9 +387,9 @@ const Hero = ({ scrollToSection }) => {
                     lg:left-[-5rem]
 
                     /* EXTRA LARGE (xl) */
-                    xl:left-[8rem]
+                    xl:left-[2rem]
                     xl:bottom-[-40rem]
-                    xl:w-80
+                    xl:w-84
                   "
                 >
                   <img

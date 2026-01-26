@@ -10,7 +10,7 @@
 }
 
 body {
-  font-family: 'Golos Text', sans-serif;
+  font-family: 'Outfit', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -54,6 +54,26 @@ html {
 
 .will-change-opacity {
   will-change: opacity;
+}
+
+/* iOS Performance Optimizations */
+.transform-gpu {
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+}
+
+/* Smooth hardware-accelerated hover effects for iOS */
+@media (hover: hover) and (pointer: fine) {
+  .hover-scale-optimized {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .hover-scale-optimized:hover {
+    transform: scale(1.08) translateZ(0);
+  }
 }
 
 /* ============================================ */
