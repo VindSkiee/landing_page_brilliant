@@ -384,7 +384,7 @@ const Hero = ({ scrollToSection }) => {
                     lg:w-full
                     lg:bottom-[-40rem]
                     lg:h-[36rem]
-                    lg:left-[-5rem]
+                    lg:left-[-3rem]
 
                     /* EXTRA LARGE (xl) */
                     xl:left-[2rem]
