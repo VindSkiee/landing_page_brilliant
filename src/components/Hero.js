@@ -338,7 +338,11 @@ const Hero = ({ scrollToSection }) => {
           >
             <div className="relative z-10 w-full h-[36rem] lg:h-[40rem] pb-8">
               {/* SVG Blob Background */}
-              <div className="absolute lg:-right-48 xl:-right-48 lg:top-28 top-[-18%] right-[-30rem] z-0">
+              <div className="absolute 
+              lg:-right-48 
+              xl:-right-48 
+              lg:top-28 
+              top-[-18%] right-[-40rem] z-0">
                 <img
                   src={BlobShape}
                   alt=""
@@ -351,17 +355,35 @@ const Hero = ({ scrollToSection }) => {
 
               {/* 3 People Container */}
               <div className="relative z-10 pr-0 lg:-mr-10 xl:-mr-20 pb-8">
-                {/* Person 1 - Siswa SMA (TETAP ADA DI MOBILE) */}
+                {/* Person 1 - Siswa SMA */}
                 <div
                   className="
                     absolute
-                    bottom-[-27rem] 
-                    left-[5rem] -translate-x-1/2
-                    sm:left-[6rem] sm:translate-x-0
-                    xl:left-[9rem] xl:bottom-[-40rem]
-                    w-64 sm:w-72 xl:w-80 lg:bottom-[-40rem]
-                    h-[26rem] sm:h-[28rem] lg:h-[36rem]
                     filter saturate-200
+
+                    /* MOBILE */
+                    bottom-[-27rem]
+                    left-[-5rem]
+                    -translate-x-1/2
+                    w-64
+                    h-[26rem]
+
+                    /* SMALL (sm) */
+                    sm:left-[-3rem]
+                    sm:translate-x-0
+                    sm:w-72
+                    sm:h-[28rem]
+
+                    /* LARGE (lg) */
+                    lg:w-full
+                    lg:bottom-[-40rem]
+                    lg:h-[36rem]
+                    lg:left-[-5rem]
+
+                    /* EXTRA LARGE (xl) */
+                    xl:left-[8rem]
+                    xl:bottom-[-40rem]
+                    xl:w-80
                   "
                 >
                   <img
@@ -372,18 +394,34 @@ const Hero = ({ scrollToSection }) => {
                   />
                 </div>
 
-                {/* Person 2 - ASN (HILANG DI MOBILE) */}
+                {/* Person 2 - ASN (MUNCUL DI MOBILE & iPad) */}
                 <div
                   className="
-                    hidden
-                    xl:block
-
                     absolute
-                    bottom-[-40rem]
-                    left-[17rem]
 
-                    w-72
-                    h-[28rem]
+                    /* MOBILE */
+                    bottom-[-27rem]
+                    left-[-7rem]
+                    w-60
+                    h-[22rem]
+
+                    /* iPad */
+                    md:bottom-[-28rem]
+                    md:left-[6rem]
+                    md:w-80
+                    md:h-[26rem]
+
+                    /* LARGE (lg) */
+                    lg:w-full
+                    lg:bottom-[-44rem]
+                    lg:h-[30rem]
+                    lg:left-[2rem]
+
+                    /* Desktop */
+                    xl:bottom-[-40rem]
+                    xl:left-[8rem]
+                    xl:w-76
+                    xl:h-[28rem]
 
                     z-30
                     filter saturate-150
@@ -397,22 +435,40 @@ const Hero = ({ scrollToSection }) => {
                   />
                 </div>
 
-                {/* Person 3 - Polisi (HILANG DI MOBILE) */}
+                {/* Person 3 - Polisi (MUNCUL DI MOBILE & iPad) */}
                 <div
-                  className="
-                    hidden
-                    xl:block
+                className="
+                  absolute
+                  z-20
+                  filter saturate-150
 
-                    absolute
-                    bottom-[-40rem]
-                    right-[-8rem]
+                  /* MOBILE */
+                  bottom-[-24rem]
+                  right-[-14rem]
+                  w-56
+                  h-[24rem]
 
-                    w-80
-                    h-[34rem]
+                  /* iPad */
+                  md:bottom-[-27rem]
+                  md:right-[-30rem]
+                  md:w-64
+                  md:h-[28rem]
 
-                    filter saturate-150
-                  "
-                >
+                  /* LARGE (lg) */
+                  lg:bottom-[-40rem]
+                  lg:left-[8rem]
+                  lg:right-auto
+                  lg:w-full
+                  lg:h-[35rem]
+
+                  /* DESKTOP (xl) */
+                  xl:left-auto
+                  xl:right-[-8rem]
+                  xl:w-80
+                  xl:h-[34rem]
+                "
+              >
+
                   <img
                     src="/photo/1_orang_polisi.webp"
                     alt="Polisi"
