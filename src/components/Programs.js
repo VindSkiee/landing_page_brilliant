@@ -13,43 +13,59 @@ const Programs = () => {
           src="/vector/vector_program.svg"
           alt=""
           className="absolute -top-24 -left-32 w-[275px] h-[265px] opacity-[0.9] transform rotate-200"
+          loading="lazy"
+          aria-hidden="true"
         />
         <img
           src="/vector/vector_program.svg"
           alt=""
           className="absolute -top-40 -right-10 w-[275px] h-[265px] opacity-[0.9] transform -rotate-45"
+          loading="lazy"
+          aria-hidden="true"
         />
         <img
           src="/vector/vector_program.svg"
           alt=""
           className="absolute top-1/3 -left-52 w-[275px] h-[265px] opacity-[0.7] transform rotate-90"
+          loading="lazy"
+          aria-hidden="true"
         />
         <img
           src="/vector/vector_program.svg"
           alt=""
           className="absolute top-1/2 -right-32 w-[275px] h-[265px] opacity-[0.7] transform -rotate-25"
+          loading="lazy"
+          aria-hidden="true"
         />
         <img
           src="/vector/vector_program.svg"
           alt=""
           className="absolute top-16 left-1/2 -translate-x-1/2 w-[275px] h-[265px] opacity-[0.07] transform rotate-30"
+          loading="lazy"
+          aria-hidden="true"
         />
         <img
           src="/vector/vector_program.svg"
           alt=""
           className="absolute top-2/3 right-1/3 w-[275px] h-[265px] opacity-[0.07] transform -rotate-15"
+          loading="lazy"
+          aria-hidden="true"
         />
         <img
           src="/vector/vector_circle.svg"
           alt=""
           className="absolute w-[245px] h-[265px] opacity-[0.9]"
           style={{ right: "450px", top: "200px" }}
+          loading="lazy"
+          aria-hidden="true"
         />
         <img
           src="/vector/vector_circle.svg"
           alt=""
           className="absolute w-[245px] h-[265px] opacity-[0.9]"
           style={{ left: "457px", top: "650px" }}
+          loading="lazy"
+          aria-hidden="true"
         />
       </div>
 
@@ -104,6 +120,7 @@ const Programs = () => {
                   className="w-[330px] h-[205px] object-cover translate-x-[-3px]
                      transition-transform duration-500 ease-out
                      group-hover:scale-[1.15]"
+                  loading="lazy"
                 />
               </div>
 

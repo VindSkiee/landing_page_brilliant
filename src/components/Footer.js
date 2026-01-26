@@ -14,6 +14,7 @@ const Footer = () => {
                 src="/photo/logo.webp"
                 alt="Brilliant Indonesia Logo"
                 className="w-12 h-12 object-contain"
+                loading="lazy"
               />
               <div>
                 <h3 className="text-brilliant-yellow font-semibold text-lg">

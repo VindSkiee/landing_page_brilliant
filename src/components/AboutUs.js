@@ -16,6 +16,7 @@ const AboutUs = () => {
               src="/photo/logo.webp"
               alt="Brilliant Indonesia Logo"
               className="w-16 h-16 lg:w-52 lg:h-52 object-contain"
+              loading="lazy"
             />
           </div>
 
@@ -54,6 +55,7 @@ const AboutUs = () => {
                 alt="Brilliant Indonesia Team"
                 className="w-full h-full object-cover z-10"
                 style={{ borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%" }}
+                loading="lazy"
                 onError={(e) => {
                   e.currentTarget.style.display = "none";
                   e.currentTarget.nextSibling.style.display = "flex";

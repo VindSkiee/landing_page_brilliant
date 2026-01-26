@@ -7,16 +7,31 @@ const Navbar = ({ scrollToSection }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
+    let rafId = null;
+    let lastScrollY = 0;
+
     const handleScroll = () => {
-      const heroSection = document.getElementById("hero");
-      if (heroSection) {
-        const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
-        setIsScrolled(window.scrollY > heroBottom - 100);
+      lastScrollY = window.scrollY;
+
+      if (rafId === null) {
+        rafId = requestAnimationFrame(() => {
+          const heroSection = document.getElementById("hero");
+          if (heroSection) {
+            const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+            setIsScrolled(lastScrollY > heroBottom - 100);
+          }
+          rafId = null;
+        });
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId);
+      }
+    };
   }, []);
 
   return (
@@ -91,6 +106,7 @@ const Navbar = ({ scrollToSection }) => {
                 src="/photo/logo.webp"
                 alt="Brilliant Indonesia Logo"
                 className="w-12 h-12 lg:w-12 lg:h-12 object-contain"
+                loading="eager"
               />
               <div className="block">
                 <div

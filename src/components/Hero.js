@@ -154,7 +154,18 @@ const Hero = ({ scrollToSection }) => {
                   return (
                     <span key={index}>
                       {isLineBreak && <br />}
-                      <span className={isHighlight ? "text-brilliant-red" : ""}>
+                      <span
+                        // PERUBAHAN DISINI:
+                        // 1. Tambahkan transition-colors dan duration-700 (700ms)
+                        // 2. Cek apakah `subheadingComplete` sudah true.
+                        //    Jika true & kata highlight -> warna merah.
+                        //    Jika false -> warna teks default (misal text-gray-900 atau inherit)
+                        className={`transition-colors duration-700 ease-in-out ${
+                          isHighlight && subheadingComplete
+                            ? "text-brilliant-red"
+                            : "text-gray-900" // Ganti dengan warna default teks heading Anda (hitam/abu tua)
+                        }`}
+                      >
                         {word}
                       </span>
                       {index < arr.length - 1 ? " " : ""}
@@ -192,7 +203,20 @@ const Hero = ({ scrollToSection }) => {
                     part.toLowerCase() === "offline & online" ? (
                       <strong
                         key={index}
-                        className="font-bold text-[#FF0000]"
+                        // TRIK CSS:
+                        // 1. Kita gunakan inline style untuk 'text-shadow'.
+                        // 2. Jika complete, kita beri shadow tipis (0.8px) dengan warna teks saat ini (currentColor).
+                        // 3. Shadow ini akan mengisi celah antar huruf, membuatnya terlihat lebih tebal secara visual.
+                        style={{
+                          textShadow: subheadingComplete
+                            ? "0 0 0.8px currentColor" // Efek tebal aktif (sesuaikan 0.8px jika terlalu tebal/tipis)
+                            : "0 0 0 transparent", // Efek tebal non-aktif
+                        }}
+                        className={`font-medium transition-all duration-1000 ease-in-out ${
+                          subheadingComplete
+                            ? "text-[#FF0000]" // Warna akhir (Merah)
+                            : "text-gray-700" // Warna awal (Abu)
+                        }`}
                       >
                         {part}
                       </strong>
@@ -200,6 +224,8 @@ const Hero = ({ scrollToSection }) => {
                       part
                     ),
                   )}
+
+                {/* Kursor Subheading */}
                 {headingComplete && (
                   <span
                     className={`inline-block w-0.5 h-4 lg:h-5 bg-gray-500 ml-1 align-middle ${

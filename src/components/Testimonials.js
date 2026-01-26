@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Image as ImageIcon } from "lucide-react";
 import { ChevronLeftIcon, ChevronRightIcon } from "./Icons";
 import { testimonials } from "../constants/data";
@@ -7,14 +7,32 @@ import ExpandableTestimonials from "./ExpandableTestimonials";
 const Testimonials = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [expandedTestimonials, setExpandedTestimonials] = useState({});
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
 
-  const getVisibleCards = useCallback(() => {
+  const getVisibleCards = () => {
     if (typeof window !== "undefined") {
       if (window.innerWidth > 1024) return 3;
       if (window.innerWidth >= 640) return 2;
       return 1;
     }
     return 3;
+  };
+
+  // Intersection Observer untuk pause/resume auto-scroll
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -22,7 +40,8 @@ const Testimonials = () => {
       (val) => val === true,
     );
 
-    if (hasExpandedCards) {
+    // Hanya auto-scroll jika section terlihat dan tidak ada card yang expanded
+    if (hasExpandedCards || !isVisible) {
       return;
     }
 
@@ -33,7 +52,7 @@ const Testimonials = () => {
       );
     }, 15000);
     return () => clearInterval(interval);
-  }, [getVisibleCards, expandedTestimonials]);
+  }, [expandedTestimonials, isVisible]);
 
   const nextTestimonial = () => {
     setCurrentTestimonial(
@@ -59,6 +78,7 @@ const Testimonials = () => {
   return (
     <section
       id="testimonials"
+      ref={sectionRef}
       className="py-12 lg:py-24 pb-8 lg:pb-16 bg-gradient-to-b from-[#FFFFFF] to-[#F5F5F5] relative overflow-hidden"
     >
       {/* Decorative Circle SVGs */}
@@ -82,6 +102,8 @@ const Testimonials = () => {
       lg:w-[275px] lg:h-[262px]
       lg:top-[90px] lg:left-[41px]
     "
+          loading="lazy"
+          aria-hidden="true"
         />
 
         {/* Circle 2 */}
@@ -103,6 +125,8 @@ const Testimonials = () => {
       lg:w-[275px] lg:h-[262px]
       lg:top-[35px] lg:left-[740px]
     "
+          loading="lazy"
+          aria-hidden="true"
         />
 
         {/* Circle 3 */}
@@ -125,6 +149,8 @@ const Testimonials = () => {
       lg:top-[280px] lg:left-[1200px]
       lg:translate-x-0
     "
+          loading="lazy"
+          aria-hidden="true"
         />
       </div>
 
@@ -266,6 +292,7 @@ const Testimonials = () => {
                                   src={testimonial.image}
                                   alt={testimonial.name}
                                   className="w-full h-full object-cover"
+                                  loading="lazy"
                                   onError={(e) => {
                                     e.currentTarget.style.display = "none";
                                     e.currentTarget.nextSibling.style.display =

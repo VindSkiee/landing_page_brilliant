@@ -63,6 +63,7 @@ const CTABanner = () => {
 
                     translate-y-20
                   "
+                  loading="lazy"
                 />
               </div>
             </div>

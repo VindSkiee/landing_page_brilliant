@@ -17,6 +17,7 @@ const Mission = () => {
                 alt="Our Mission"
                 className="w-full h-full object-cover"
                 style={{ borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%" }}
+                loading="lazy"
                 onError={(e) => {
                   e.currentTarget.style.display = "none";
                   e.currentTarget.nextSibling.style.display = "flex";
