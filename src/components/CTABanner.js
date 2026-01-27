@@ -59,7 +59,7 @@ const CTABanner = () => {
                     -scale-x-100
 
                     bottom-[29px]        /* iPad Pro (lg) */
-                    xl:bottom-[18px]      /* Desktop besar */
+                    xl:bottom-[22px]      /* Desktop besar */
 
                     translate-y-20
                   "
