@@ -171,7 +171,7 @@ const Testimonials = () => {
           <button
             onClick={prevTestimonial}
             className="absolute left-[-5px] sm:left-4 lg:left-0 z-20 text-gray-700 hover:text-black hover:scale-110 transition-all duration-300"
-            style={{ top: "50%", transform: "translateY(-50%)" }}
+            style={{ top: "240px" }}
             aria-label="Previous testimonial"
           >
             <ChevronLeftIcon className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 drop-shadow-lg" />
@@ -180,7 +180,7 @@ const Testimonials = () => {
           <button
             onClick={nextTestimonial}
             className="absolute right-[-5px] sm:right-4 lg:right-0 z-20 text-gray-700 hover:text-black hover:scale-110 transition-all duration-300"
-            style={{ top: "50%", transform: "translateY(-50%)" }}
+            style={{ top: "240px" }}
             aria-label="Next testimonial"
           >
             <ChevronRightIcon className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 drop-shadow-lg" />
@@ -219,20 +219,20 @@ const Testimonials = () => {
                       .map((testimonial) => (
                         <div
                           key={testimonial.id}
-                          className="flex flex-col items-center pt-6 sm:pt-8"
+                          className="flex flex-col items-center pt-6 sm:pt-8 mb-10"
                         >
                           <div className="relative">
                             {/* University Badge */}
                             {/* University Badge - Auto Height Version */}
                             <div
                               className="absolute left-1/2 -translate-x-1/2 
-  bg-gradient-to-b from-white to-gray-50 border border-gray-100
-  flex items-center justify-center z-10 
-  shadow-[0_8px_30px_rgb(0,0,0,0.12)] 
-  mt-8 sm:mt-10
-  transition-all duration-500 ease-out
-  group-hover:shadow-[0_20px_35px_rgba(0,0,0,0.15)]
-  group-hover:border-orange-100 group-hover:-translate-y-1 group-hover:scale-105"
+                                bg-gradient-to-b from-white to-gray-50 border border-gray-100
+                                flex items-center justify-center z-10 
+                                shadow-[0_8px_30px_rgb(0,0,0,0.12)] 
+                                mt-8 sm:mt-10
+                                transition-all duration-500 ease-out
+                                group-hover:shadow-[0_20px_35px_rgba(0,0,0,0.15)]
+                                group-hover:border-orange-100 group-hover:-translate-y-1 group-hover:scale-105"
                               style={{
                                 width: "260px",
                                 minHeight: "60px", // Ganti height jadi minHeight

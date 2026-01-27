@@ -166,7 +166,7 @@ const ExpandableTestimonials = () => {
         >
           {/* Grid Container */}
           <div className="max-w-[1200px] mx-auto px-4 relative z-10">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mb-10">
               {expandableTestimonials.map((testimonial) => (
                 <TestimonialCard
                   key={testimonial.id}
@@ -189,7 +189,7 @@ const TestimonialCard = ({ testimonial }) => {
         bg-white rounded-2xl p-4 flex flex-col py-10
         transition-all duration-700 ease-out
         hover:border-orange-500 hover:-translate-y-2 hover:shadow-2xl
-        h-full
+        h-full mt-5
       "
       style={{
         minHeight: "260px",
@@ -203,7 +203,7 @@ const TestimonialCard = ({ testimonial }) => {
           absolute inset-0 z-0
           bg-orange-500
           scale-0 opacity-0
-          transition-all duration-700 ease-out
+          transition-all duration-1000 ease-out
           group-hover:scale-125 group-hover:opacity-100
         "
         style={{ borderRadius: "16px", transformOrigin: "center" }}
