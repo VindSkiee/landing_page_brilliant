@@ -51,7 +51,7 @@ const AboutUs = () => {
               style={{ borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%" }}
             >
               <img
-                src="/photo/aboutUs.png"
+                src="/photo/aboutUs.webp"
                 alt="Brilliant Indonesia Team"
                 className="w-full h-full object-cover z-10"
                 style={{ borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%" }}
