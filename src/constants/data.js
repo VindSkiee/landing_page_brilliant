@@ -59,7 +59,7 @@ export const testimonials = [
     university: "Lulus CPT Kemenkumham",
     image: "/photo/testimonial/Chandra.webp",
     quote:
-      "Brilliant Indonesia bener-bener game changer 🔥 Materinya relevan, pembahasannya ngena, dan cara ngajarnya gak ngebosenin sama sekali. Dari yang awalnya bingung, jadi paham dan lebih pede buat berkembang. Highly recommended buat kamu yang mau level up, serius.",
+      "Awalnya saya sempet pesimis bisa lolos CPT Kemenkumham karena persaingannya ketat banget dan materinya luas. Terus temen rekomendasiin Brilliant Indonesia dan itu bener-bener game changer sih 🔥 Materinya relevan sama kisi-kisi terbaru, pembahasannya ngena ke inti soal, dan cara ngajarnya gak ngebosenin sama sekali. Yang paling berasa tuh simulasi CAT-nya mirip banget sama tes aslinya, jadi pas hari H udah gak grogi lagi. Dari yang awalnya bingung dan gak tau mau belajar dari mana, sekarang jadi paham strateginya dan lebih pede buat berkembang. Alhamdulillah bisa lolos dan diterima di instansi impian. Highly recommended buat kamu yang mau level up karir, serius.",
   },
   {
     id: 2,
@@ -67,15 +67,15 @@ export const testimonials = [
     university: "Lulus CPNS Tenaga Kesehatan",
     image: "/photo/testimonial/Rendra.webp",
     quote:
-      "Mentor-mentornya sangat berpengalaman dan sabar dalam mengajar. Materi yang diberikan lengkap dan up-to-date sesuai kurikulum terbaru.",
+      "Sebagai alumni kesehatan yang mau ikut CPNS, saya bingung banget harus belajar dari mana karena selain harus nguasain SKD, ada juga materi SKB yang spesifik banget. Untungnya ketemu Brilliant yang punya program khusus untuk tenaga kesehatan. Mentor-mentornya sangat berpengalaman di bidangnya dan sabar banget dalam mengajar, gak cuma sekedar ngejelasin tapi juga kasih tips dan trik ngerjain soal dengan cepat. Materi yang diberikan lengkap banget mulai dari TWK, TIU, TKP sampai materi bidang kesehatan, semuanya up-to-date sesuai kurikulum terbaru CASN. Try out mingguan juga ngebantu banget buat ngukur kemampuan dan adaptasi sama sistem CAT. Alhamdulillah akhirnya bisa lolos dan siap mengabdi sebagai ASN. Makasih banyak Brilliant!",
   },
   {
     id: 3,
     name: "Kenzie Muhammad Rizieq",
-    university: "Lulus SNBT ke Universitas Gajah Mada",
+    university: "Lulus SNBT 2024 UGM",
     image: "/photo/testimonial/Kenzie.webp",
     quote:
-      "Program garansi tahun depan membuat saya lebih tenang dalam belajar. Alhamdulillah lolos di percobaan pertama!",
+      "Saya mengikuti program PTN dari kelas 11 SMA dengan persiapan yang cukup untuk menembus UGM (universitas impian saya), namun saya gagal pada saat tes UTBK, mungkin karena kuota yang terbatas dan persaingan yang sangat ketat, akan tetapi Brilliant tidak menyerah kepada saya, Brilliant merekomendasikan saya untuk mengambil tes UM UGM. Dengan Brilliant, saya kembali belajar soal-soal UM dan Alhamdulillah lulus di Proteksi Tanaman UGM. Terimakasih banyak Brilliant karena tidak hanya mengajari saya, namun juga memberikan opsi terbaik untuk saya.",
   },
   {
     id: 4,
@@ -83,15 +83,15 @@ export const testimonials = [
     university: "Lulus CPNS Dosen",
     image: "/photo/testimonial/Hafizh.webp",
     quote:
-      "Bimbel terbaik yang pernah saya ikuti! Sistem belajarnya fleksibel, bisa online maupun offline sesuai kebutuhan.",
+      "Sebagai calon dosen yang sibuk dengan kuliah S2 dan ngajar, saya butuh bimbel yang bisa nyesuain sama jadwal saya yang padat. Brilliant Indonesia ini bimbel terbaik yang pernah saya ikuti! Sistem belajarnya super fleksibel, bisa online maupun offline sesuai kebutuhan dan waktu luang saya. Materinya juga disesuaikan dengan formasi dosen yang saya tuju, jadi gak perlu belajar yang gak penting. Yang paling saya suka tuh akses ke bank soal dan video pembelajarannya bisa diakses 24/7, jadi kalau malem-malem ada waktu kosong bisa langsung belajar. Mentor-mentornya juga responsif kalau ditanya via grup WhatsApp. Metode belajarnya efisien dan tepat sasaran, cocok buat yang punya kesibukan tinggi kayak saya. Alhamdulillah lolos CPNS Dosen dan sekarang bisa berkarir sesuai passion. Terima kasih Brilliant!",
   },
   {
     id: 5,
-    name: "Nata Akbari Syaifullah",
-    university: "Lulus CPNS Kemenkumham",
-    image: "/photo/testimonial/Nata.webp",
+    name: "Zaki",
+    university: "Lulus STIP 2022",
+    image: "/photo/expandTestimonial/Zaki_STIP.jpg",
     quote:
-      "Lolos CPNS berkat bimbingan dari Brilliant Indonesia. Sangat membantu untuk persiapan ujian sesungguhnya.",
+      "Awalnya saya masuk Brilliant karena minat saya untuk masuk kedinasan dan PTN, lalu diajak oleh sahabat saya juga, setelah mengikuti pembelajaran di Brilliant, materi yang disampaikan sangat mudah dipahami dan metode yang diajarkan sangat membantu saya dalam menjawab soal-soal pada try out. Alhamdulillah saat mengikuti tes, saya mendapatkan nilai yang sangat memuaskan, soal-soal yang diajarkan sebelumnya sangat membantu saya. Terimakasih Brilliant, sudah membantu saya untuk lulus di STIP dan Teknik Sipil Unsri.",
   },
   {
     id: 6,
@@ -99,7 +99,7 @@ export const testimonials = [
     university: "Lulus TNI AD",
     image: "/photo/testimonial/Gifari.webp",
     quote:
-      "Dari awal tidak percaya diri, sekarang sudah diterima di TNI AD. Terima kasih Brilliant Indonesia!",
+      "Jujur dari awal saya itu gak percaya diri sama sekali buat ikut seleksi TNI AD karena fisik saya pas-pasan dan pengetahuan akademik juga masih kurang. Tapi setelah bergabung dengan Brilliant, semuanya berubah total. Mereka gak cuma fokus ke akademik doang, tapi juga ngasih motivasi dan mental coaching yang bikin saya jadi lebih pede dan pantang menyerah. Materi akademik dan psikotesnya lengkap, latihan soalnya juga mirip banget sama tes aslinya. Yang paling berkesan itu pas mentor-mentor kasih tips dan strategi menghadapi setiap tahapan seleksi, dari administrasi sampai wawancara. Mereka juga bantu nguatin mental biar gak gampang nyerah pas lagi capek latihan fisik. Sekarang sudah resmi diterima di TNI AD dan siap mengabdi untuk negara. Terima kasih banyak Brilliant Indonesia, kalian bener-bener bikin mimpi saya jadi kenyataan!",
   },
 ];
 
@@ -132,16 +132,16 @@ export const expandableTestimonials = [
   {
     id: 4,
     name: "Yuriga",
-    acceptance: "Lulus CPNS Kemenkumham",
+    acceptance: "Lulus CPNS Kemenkumham SKD tertinggi se-provinsi 478",
     image: "/photo/expandTestimonial/Yuriga _CPNSKemenkumham.webp",
     quote:
       "Awalnya ragu bisa tembus Kemenkumham karena saingannya ribuan. Tapi berkat bimbingan intensif dan tryout rutin di sini, skor SKD saya melonjak drastis dan aman sampai tahap akhir.",
   },
   {
     id: 5,
-    name: "Zaki",
-    acceptance: "Lulus STIP Jakarta",
-    image: "/photo/expandTestimonial/Zaki_STIP.jpg",
+    name: "Nata Akbari Syaifullah",
+    acceptance: "Lulus CPNS Kemenkumham",
+    image: "/photo/testimonial/Nata.webp",
     quote:
       "Masuk sekolah kedinasan impian kayak STIP rasanya mustahil kalau belajar sendiri. Brilliant ngebantu banget bedah soal TPA dan TBI-nya sampai ke akar-akarnya. Recommended buat pejuang kedinasan!",
   },
