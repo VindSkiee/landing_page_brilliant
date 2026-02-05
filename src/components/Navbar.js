@@ -171,7 +171,7 @@ const Navbar = ({ scrollToSection }) => {
             {/* CTA Button */}
             <div className="flex items-center gap-4">
               <a
-                href="https://wa.me/6281366369621"
+                href="https://wa.me/6281366369621?text=Halo%20Kak%20Admin,%20saya%20tertarik%20tanya%20program%20Bimbel%20Brilliant%20Indonesia"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="
@@ -260,7 +260,7 @@ const Navbar = ({ scrollToSection }) => {
 
             {/* 🔥 BUTTON CHAT WA (MOBILE ONLY) */}
             <a
-              href="https://wa.me/6281366369621"
+              href="https://wa.me/6281366369621?text=Halo%20Kak%20Admin,%20saya%20tertarik%20tanya%20program%20Bimbel%20Brilliant%20Indonesia"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsMobileMenuOpen(false)}

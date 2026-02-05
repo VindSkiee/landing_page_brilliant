@@ -25,7 +25,7 @@ const CTABanner = () => {
                 </p>
                 <div className="flex flex-wrap gap-3 pt-2 py-2 lg:py-2 xl:py-4 justify-center lg:justify-start xl:justify-start">
                   <a
-                    href="https://wa.me/6281366369621"
+                    href="https://wa.me/6281366369621?text=Halo%20Kak%20Admin,%20saya%20tertarik%20tanya%20program%20Bimbel%20Brilliant%20Indonesia"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-white text-brilliant-orange px-3 py-2.5 lg:py-3 rounded-[10px] text-sm lg:text-base font-bold hover:scale-105 hover:shadow-lg transition-all duration-300"
@@ -33,7 +33,7 @@ const CTABanner = () => {
                     Hubungi Kami
                   </a>
                   <a
-                    href="https://wa.me/6281366369621"
+                    href="https://wa.me/6281366369621?text=Halo%20Kak%20Admin,%20saya%20tertarik%20tanya%20program%20Bimbel%20Brilliant%20Indonesia"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group flex items-center gap-2 bg-brilliant-purple text-white px-4 py-2.5 lg:py-3 rounded-[10px] text-sm lg:text-base font-bold hover:scale-105 hover:shadow-lg transition-all duration-300"
