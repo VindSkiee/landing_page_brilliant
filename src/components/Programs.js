@@ -74,17 +74,12 @@ const Programs = () => {
         <div className="text-center mb-8 lg:mb-16">
           <h2 className="text-2xl sm:text-3xl lg:text-5xl font-black leading-[1.15] mb-3 lg:mb-4">
             <span className="bg-gradient-to-r from-[#FF0000] to-[#FF7400] bg-clip-text text-transparent">
-              Program Bimbel{" "}
+              Program Bimbel Jambi{" "}
             </span>
             <span className="text-brilliant-purple">BRILLIANT</span>
-            <span className="bg-gradient-to-r from-[#FF7400] to-[#FFC100] bg-clip-text text-transparent">
-              {" "}
-              yang Tersedia
-            </span>
           </h2>
           <p className="text-gray-600 text-[0.9rem] lg:text-lg max-w-2xl mx-auto">
-            Berbagai macam pilihan program bimbel yang dapat dipilih sesuai
-            kebutuhanmu!
+            Pilihan program les privat dan bimbel online terbaik untuk SD, SMP, SMA, serta persiapan SNBT, CPNS, dan Kedinasan
           </p>
         </div>
 
@@ -126,7 +121,7 @@ const Programs = () => {
               >
                 <img
                   src={`/photo/${program.image}`}
-                  alt={program.title}
+                  alt={`${program.title} ${program.subtitle} - Bimbel Brilliant Indonesia Jambi`}
                   className="
                       w-[330px] h-[205px] object-cover
                       translate-x-[10px]

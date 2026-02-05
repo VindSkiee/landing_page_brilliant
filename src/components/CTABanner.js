@@ -17,12 +17,11 @@ const CTABanner = () => {
                 <h2 className="text-2xl sm:text-3xl lg:text-3xl font-bold text-white leading-tight">
                   Sudah siap untuk{" "}
                   <span className="text-brilliant-purple font-extrabold font-poppins">
-                    Daftar?
+                    Daftar Bimbel?
                   </span>
                 </h2>
                 <p className="text-gray-100 text-[12px] lg:text-[14px] xl:text-1xl font-medium leading-relaxed">
-                  Mari bergabung bersama Brilliant Indonesia untuk meraih
-                  sekolah/perguruan tinggi Impianmu!
+                  Bergabung dengan 1000+ alumni sukses! Les privat & bimbel online terbaik di Jambi dan seluruh Indonesia.
                 </p>
                 <div className="flex flex-wrap gap-3 pt-2 py-2 lg:py-2 xl:py-4 justify-center lg:justify-start xl:justify-start">
                   <a
@@ -49,7 +48,7 @@ const CTABanner = () => {
               <div className="relative h-[221px] hidden lg:block">
                 <img
                   src="/photo/sma_cta_section.webp"
-                  alt="Daftar Sekarang"
+                  alt="Daftar Bimbel Brilliant Indonesia Jambi - Les Privat SD SMP SMA Online"
                   className="
                     absolute
                     right-28
@@ -58,8 +57,8 @@ const CTABanner = () => {
                     object-contain
                     -scale-x-100
 
-                    bottom-[29px]        /* iPad Pro (lg) */
-                    xl:bottom-[22px]      /* Desktop besar */
+                    bottom-[12px]        /* iPad Pro (lg) */
+                    xl:bottom-[4px]      /* Desktop besar */
 
                     translate-y-20
                   "

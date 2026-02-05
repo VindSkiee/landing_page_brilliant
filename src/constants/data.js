@@ -1,51 +1,51 @@
-// Data untuk Program Bimbel
+// Data untuk Program Bimbel - Optimized for SEO
 export const programs = [
   {
     id: 1,
-    title: "Program bimbel TKA",
+    title: "Bimbel TKA",
     subtitle: "SD, SMP & SMA",
     description:
-      "Bimbingan belajar untuk TKA SD, SMP, dan SMA dengan materi terstruktur, latihan rutin, dan pendampingan intensif agar siap menghadapi ujian sekolah.",
+      "Les privat dan bimbel persiapan TKA untuk SD, SMP, dan SMA di Jambi dan online seluruh Indonesia. Materi terstruktur, latihan rutin, dan pendampingan intensif dari tutor berpengalaman.",
     image: "tka.webp",
   },
   {
     id: 2,
-    title: "Program bimbel",
-    subtitle: "SNBT & UM PTN",
+    title: "Bimbel SNBT",
+    subtitle: "& UM PTN",
     description:
-      "Program persiapan masuk PTN favorit dengan fokus latihan soal SNBT dan UM, strategi pengerjaan, serta pembahasan mendalam bersama mentor berpengalaman.",
+      "Program bimbingan belajar persiapan masuk PTN favorit melalui jalur SNBT dan Ujian Mandiri. Strategi pengerjaan soal, tryout rutin, dan pembahasan mendalam bersama mentor alumni PTN.",
     image: "snbt.webp",
   },
   {
     id: 3,
-    title: "Program bimbel",
-    subtitle: "Tes CPNS & CPPPK",
+    title: "Bimbel CPNS",
+    subtitle: "& PPPK",
     description:
-      "Persiapan tes CPNS dan PPPK mulai dari TWK, TIU, hingga TKP dengan simulasi CAT dan pembahasan soal yang sesuai standar terbaru.",
+      "Kursus persiapan tes CPNS dan PPPK terlengkap di Jambi. Materi TWK, TIU, TKP dengan simulasi CAT terbaru dan pembahasan soal sesuai standar BKN.",
     image: "cpns.webp",
   },
   {
     id: 4,
-    title: "Program bimbel",
-    subtitle: "Tes Polisi & TNI",
+    title: "Bimbel Polri",
+    subtitle: "& TNI",
     description:
-      "Program khusus persiapan seleksi Polisi dan TNI meliputi akademik, psikotes, dan pembinaan mental agar lebih siap dan percaya diri saat tes.",
+      "Program bimbel khusus persiapan seleksi Polri dan TNI. Meliputi tes akademik, psikotes, dan pembinaan mental. Tersedia offline di Jambi dan online.",
     image: "polisi_tni.webp",
   },
   {
     id: 5,
-    title: "Program bimbel",
-    subtitle: "Tes Kedinasan",
+    title: "Bimbel Kedinasan",
+    subtitle: "STAN, STIS, IPDN",
     description:
-      "Bimbingan intensif untuk tes sekolah kedinasan dengan materi terarah, latihan soal berkala, dan strategi lolos seleksi tahap demi tahap.",
+      "Les intensif persiapan tes sekolah kedinasan seperti STAN, STIS, IPDN, dan lainnya. Materi terarah, latihan soal berkala, dan strategi lolos seleksi tahap demi tahap.",
     image: "kedinasan.webp",
   },
   {
     id: 6,
-    title: "Program bimbel",
-    subtitle: "Tes BUMN & BUMS",
+    title: "Bimbel Rekrutmen",
+    subtitle: "BUMN & BUMS",
     description:
-      "Persiapan tes rekrutmen BUMN dan BUMS dengan fokus kemampuan dasar, psikotes, dan simulasi soal sesuai kebutuhan dunia kerja.",
+      "Persiapan tes rekrutmen BUMN dan perusahaan swasta. Fokus pada kemampuan dasar, psikotes, dan simulasi soal sesuai kebutuhan dunia kerja profesional.",
     image: "bumn.webp",
   },
 ];

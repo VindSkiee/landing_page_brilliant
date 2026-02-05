@@ -25,7 +25,7 @@ const AboutUs = () => {
             BRILLIANT INDONESIA
           </h2>
           <p className="text-xl sm:text-2xl lg:text-3xl font-semibold text-white">
-            MITRA MERAIH SUKSES BERNILAI
+            Bimbel Terpercaya di Jambi Sejak 2015
           </p>
         </div>
 
@@ -33,14 +33,10 @@ const AboutUs = () => {
           {/* Left Content */}
           <div className="space-y-4 lg:space-y-6">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-brilliant-purple leading-tight" style={{ fontWeight: 900 }}>
-              Tentang Kami
+              Tentang Bimbel Brilliant Jambi
             </h2>
             <p className="text-gray-700 text-base sm:text-lg lg:text-xl leading-relaxed">
-              Brilliant Indonesia adalah lembaga bimbingan belajar yang
-              dirancang dengan teliti, untuk memberikan
-              pengalaman belajar yang menyenangkan dan efektif. Kami berkomitmen
-              membantu siswa meraih impian mereka dengan metode yang terbukti
-              berhasil.
+              <strong>Brilliant Indonesia</strong> adalah lembaga bimbingan belajar (bimbel) terbaik di Jambi yang berdiri sejak 10 Maret 2015. Kami menyediakan layanan <strong>les offline di Jambi</strong> dan <strong>bimbel online</strong> untuk siswa di seluruh Indonesia. Dengan lebih dari 1000+ alumni sukses, kami berkomitmen membantu siswa meraih impian masuk PTN, lolos CPNS, Kedinasan, TNI, dan Polri.
             </p>
           </div>
 
@@ -52,7 +48,7 @@ const AboutUs = () => {
             >
               <img
                 src="/photo/aboutUs.webp"
-                alt="Brilliant Indonesia Team"
+                alt="Tim Pengajar Bimbel Brilliant Indonesia Jambi - Les Privat SD SMP SMA"
                 className="w-full h-full object-cover z-10"
                 style={{ borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%" }}
                 loading="lazy"

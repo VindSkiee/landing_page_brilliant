@@ -23,8 +23,8 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-white text-sm mb-6 leading-relaxed">
-              Bimbingan belajar <span className="text-white font-bold">offline & online</span> yang didirikan 
-              <br/>sejak 10 Maret 2015. terpercaya untuk:
+              Bimbel terbaik di <span className="text-white font-bold">Jambi</span> dengan layanan <span className="text-white font-bold">offline & online</span> sejak 2015.
+              <br/>Les privat dan bimbingan belajar terpercaya untuk:
               <ul className="text-white text-sm mb-6 leading-relaxed space-y-2 mt-2 md:ml-4">
                 {[
                   "Tes TKA SD / SMP / SMA",

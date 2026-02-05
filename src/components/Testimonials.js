@@ -161,10 +161,10 @@ const Testimonials = () => {
             className="text-2xl sm:text-3xl lg:text-5xl font-black leading-[1.15] mb-3 lg:mb-4"
             style={{ fontWeight: 900 }}
           >
-            Mari Dengarkan Mereka yang Sudah Lulus
+            Testimoni Alumni Bimbel Brilliant Indonesia
           </h2>
           <p className="text-gray-600 text-base lg:text-2xl xl:text-lg">
-            Simak alumni-alumni terbaik kami
+            1000+ siswa sukses dari Jambi dan seluruh Indonesia
           </p>
         </div>
 
