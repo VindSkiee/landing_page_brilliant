@@ -12,7 +12,7 @@ const Hero = ({ scrollToSection }) => {
 
   const fullHeading = "Bimbel Terbaik di Jambi.|Garansi Lulus! Tidak Lulus?|Gratis Tahun Depan";
   const fullSubheading =
-    "Bimbingan belajar offline & online untuk TKA, SNBT, CPNS, Kedinasan. Dibimbing langsung oleh alumni UGM, ITB, & UNDIP.";
+    "Bimbingan belajar offline & online untuk TKA, SNBT, CPNS, Kedinasan, Polisi, TNI. Dibimbing langsung oleh alumni UGM, ITB, & UNDIP.";
 
   const heroRef = useRef(null);
 
@@ -204,7 +204,7 @@ const Hero = ({ scrollToSection }) => {
             >
               {/* 1. Span Invisible untuk menjaga layout */}
               <span className="invisible" aria-hidden="true">
-                Bimbingan belajar <strong>offline & online</strong> untuk TKA, SNBT, CPNS, Kedinasan. Dibimbing langsung oleh alumni UGM, ITB, & UNDIP.
+                Bimbingan belajar <strong>offline & online</strong> untuk TKA, SNBT, CPNS, Kedinasan, Polisi, TNI. Dibimbing langsung oleh alumni UGM, ITB, & UNDIP.
               </span>
 
               {/* 2. Teks yang sedang diketik */}
