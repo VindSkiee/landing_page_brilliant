@@ -57,8 +57,8 @@ const CTABanner = () => {
                     object-contain
                     -scale-x-100
 
-                    bottom-[12px]        /* iPad Pro (lg) */
-                    xl:bottom-[4px]      /* Desktop besar */
+                    bottom-[10px]        /* iPad Pro (lg) */
+                    xl:bottom-[2.5px]      /* Desktop besar */
 
                     translate-y-20
                   "
