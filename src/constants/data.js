@@ -10,24 +10,24 @@ export const programs = [
   },
   {
     id: 2,
-    title: "Bimbel SNBT",
-    subtitle: "& UM PTN",
+    title: "Bimbel",
+    subtitle: "SNBT & UM PTN",
     description:
       "Program bimbingan belajar persiapan masuk PTN favorit melalui jalur SNBT dan Ujian Mandiri. Strategi pengerjaan soal, tryout rutin, dan pembahasan mendalam bersama mentor alumni PTN.",
     image: "snbt.webp",
   },
   {
     id: 3,
-    title: "Bimbel CPNS",
-    subtitle: "& PPPK",
+    title: "Bimbel",
+    subtitle: "CPNS & PPPK",
     description:
       "Kursus persiapan tes CPNS dan PPPK terlengkap di Jambi. Materi TWK, TIU, TKP dengan simulasi CAT terbaru dan pembahasan soal sesuai standar BKN.",
     image: "cpns.webp",
   },
   {
     id: 4,
-    title: "Bimbel Polri",
-    subtitle: "& TNI",
+    title: "Bimbel",
+    subtitle: "Polri & TNI",
     description:
       "Program bimbel khusus persiapan seleksi Polri dan TNI. Meliputi tes akademik, psikotes, dan pembinaan mental. Tersedia offline di Jambi dan online.",
     image: "polisi_tni.webp",
