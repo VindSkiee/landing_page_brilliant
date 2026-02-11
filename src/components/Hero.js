@@ -10,9 +10,9 @@ const Hero = ({ scrollToSection }) => {
   const [headingComplete, setHeadingComplete] = useState(false);
   const [subheadingComplete, setSubheadingComplete] = useState(false);
 
-  const fullHeading = "Bimbel Terbaik di Jambi.|Garansi Lulus! Tidak Lulus?|Gratis Tahun Depan";
+  const fullHeading = "Lulus Tes TKA, SNBT, SKD.|Garansi Lulus! Tidak Lulus?|Gratis Tahun Depan";
   const fullSubheading =
-    "Bimbingan belajar offline & online untuk TKA, SNBT, CPNS, Kedinasan, Polisi, TNI. Dibimbing langsung oleh alumni UGM, ITB, & UNDIP.";
+    "Bimbingan belajar offline & online terbaik. Dibimbing langsung oleh alumni UGM, ITB, & UNDIP dengan metode praktis tanpa ribet.";
 
   const heroRef = useRef(null);
 
@@ -131,7 +131,7 @@ const Hero = ({ scrollToSection }) => {
             >
               {/* 1. Span Invisible: Untuk menjaga layout agar tidak melompat */}
               <span className="invisible" aria-hidden="true">
-                Bimbel Terbaik di <span className="text-brilliant-red">Jambi.</span>
+                Lulus Tes <span className="text-brilliant-red">TKA, SNBT, SKD.</span>
                 <br />
                 Garansi Lulus! Tidak Lulus?
                 <br />
@@ -142,7 +142,7 @@ const Hero = ({ scrollToSection }) => {
               <span className="absolute inset-0 whitespace-pre-wrap">
                 {(() => {
                   const lines = fullHeading.split("|");
-                  const highlightWords = ["Jambi.", "Tahun", "Depan"];
+                  const highlightWords = ["TKA,", "SNBT,", "SKD.", "Tahun", "Depan"];
                   let charCount = 0;
                   
                   return lines.map((line, lineIndex) => {
@@ -204,7 +204,7 @@ const Hero = ({ scrollToSection }) => {
             >
               {/* 1. Span Invisible untuk menjaga layout */}
               <span className="invisible" aria-hidden="true">
-                Bimbingan belajar <strong>offline & online</strong> untuk TKA, SNBT, CPNS, Kedinasan, Polisi, TNI. Dibimbing langsung oleh alumni UGM, ITB, & UNDIP.
+                Bimbingan belajar <strong>offline & online</strong> untuk TKA, SNBT, CPNS, Kedinasan. Dibimbing langsung oleh alumni UGM, ITB, & UNDIP.
               </span>
 
               {/* 2. Teks yang sedang diketik */}

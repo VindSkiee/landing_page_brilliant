@@ -21,7 +21,7 @@ const CTABanner = () => {
                   </span>
                 </h2>
                 <p className="text-gray-100 text-[12px] lg:text-[14px] xl:text-1xl font-medium leading-relaxed">
-                  Bergabung dengan 1000+ alumni sukses! Les privat & bimbel online terbaik di Jambi dan seluruh Indonesia.
+                  Bergabung dengan 1000+ alumni sukses! bimbel offline & online terbaik di Jambi dan seluruh Indonesia.
                 </p>
                 <div className="flex flex-wrap gap-3 pt-2 py-2 lg:py-2 xl:py-4 justify-center lg:justify-start xl:justify-start">
                   <a

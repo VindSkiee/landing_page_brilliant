@@ -23,7 +23,7 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-white text-sm mb-6 leading-relaxed">
-              Bimbel terbaik di <span className="text-white font-bold">Jambi</span> dengan layanan <span className="text-white font-bold">offline & online</span> sejak 2015.
+              Bimbel terbaik dan terpercaya di <span className="text-white font-bold">Indonesia</span> dengan layanan <span className="text-white font-bold">offline & online</span> sejak 2015.
               <br/>Les privat dan bimbingan belajar terpercaya untuk:
               <ul className="text-white text-sm mb-6 leading-relaxed space-y-2 mt-2 md:ml-4">
                 {[
