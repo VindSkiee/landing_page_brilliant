@@ -76,7 +76,7 @@ const Programs = () => {
             <span className="bg-gradient-to-r from-[#FF0000] to-[#FF7400] bg-clip-text text-transparent">
               Program Bimbel{" "}
             </span>
-            <span className="text-brilliant-purple">BRILLIANT INDOENSIA</span>
+            <span className="text-brilliant-purple">BRILLIANT INDONESIA</span>
           </h2>
           <p className="text-gray-600 text-[0.9rem] lg:text-lg max-w-2xl mx-auto">
             Pilihan program les offline & online terbaik untuk SD, SMP, SMA, serta persiapan SNBT, CPNS, dan Kedinasan
